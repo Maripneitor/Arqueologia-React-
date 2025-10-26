@@ -1,0 +1,31 @@
+{
+  "servicios": [
+    {
+      "id": 1,
+      "nombre": "Excavación Arqueológica",
+      "slug": "excavacion-arqueologica",
+      "descripcion_corta": "Excavaciones sistemáticas y documentación de sitios arqueológicos",
+      "descripcion_completa": "Realizamos excavaciones arqueológicas profesionales con metodología científica, documentación exhaustiva y preservación del contexto estratigráfico.",
+      "icono": "FaTools",
+      "orden": 1
+    },
+    {
+      "id": 2,
+      "nombre": "Análisis de Materiales",
+      "slug": "analisis-materiales",
+      "descripcion_corta": "Estudio científico de cerámica, lítica y otros materiales",
+      "descripcion_completa": "Análisis especializado de materiales arqueológicos mediante técnicas de laboratorio incluyendo microscopía, análisis de composición y datación.",
+      "icono": "FaMicroscope",
+      "orden": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Restauración y Conservación",
+      "slug": "restauracion-conservacion",
+      "descripcion_corta": "Preservación y restauración de bienes culturales",
+      "descripcion_completa": "Servicios de conservación preventiva y restauración de objetos arqueológicos utilizando materiales y técnicas compatibles.",
+      "icono": "FaHistory",
+      "orden": 3
+    }
+  ]
+}

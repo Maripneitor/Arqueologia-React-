@@ -1,0 +1,48 @@
+/* src/components/Header.css */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  z-index: 1000;
+  /* El fondo será manejado por Framer Motion */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  /* Asegura que el logo se adapte al modo oscuro/claro */
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-nav a {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* * TODO (Sección 10.2): 
+ * Aquí agregaremos los estilos para el menú de hamburguesa
+ * en el breakpoint de 768px.
+ * Por ahora, nos enfocamos en el layout de desktop.
+ */

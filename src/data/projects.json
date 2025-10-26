@@ -1,0 +1,103 @@
+{
+  "proyectos": [
+    {
+      "id": 1,
+      "titulo": "Excavación Templo Maya",
+      "slug": "excavacion-templo-maya",
+      "descripcion_corta": "Descubrimiento y restauración de templo maya del período clásico",
+      "descripcion_completa": "Proyecto de excavación extensiva que reveló un templo maya completo con jeroglíficos intactos. El trabajo incluyó documentación 3D, análisis de materiales y conservación preventiva.",
+      "fecha": "2024",
+      "ubicacion": "Peten, Guatemala",
+      "es_destacado": true,
+      "orden": 1,
+      "imagen_antes": {
+        "url": "https://images.unsplash.com/photo-1583324114697-6d44a77e7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Excavación en progreso del templo maya"
+      },
+      "imagen_despues": {
+        "url": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Templo maya restaurado"
+      },
+      "galeria": [
+        {
+          "url": "https://images.unsplash.com/photo-1540555700478-4be289d6b6b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "alternativeText": "Detalle de jeroglíficos"
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "alternativeText": "Herramientas de excavación"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Restauración Cerámica Prehispánica",
+      "slug": "restauracion-ceramica",
+      "descripcion_corta": "Reconstrucción de piezas cerámicas antiguas usando técnicas tradicionales",
+      "descripcion_completa": "Proyecto de restauración que recuperó más de 50 piezas cerámicas utilizando métodos arqueológicos tradicionales combinados con tecnología moderna para análisis de pigmentos.",
+      "fecha": "2023",
+      "ubicacion": "Oaxaca, México",
+      "es_destacado": true,
+      "orden": 2,
+      "imagen_antes": {
+        "url": "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Fragmentos cerámicos antes de la restauración"
+      },
+      "imagen_despues": {
+        "url": "https://images.unsplash.com/photo-1540555700478-4be289d6b6b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Cerámica restaurada exhibida"
+      },
+      "galeria": [
+        {
+          "url": "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "alternativeText": "Proceso de restauración"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "Análisis de Herramientas Líticas",
+      "slug": "analisis-herramientas-liticas",
+      "descripcion_corta": "Estudio científico de herramientas de piedra antiguas",
+      "descripcion_completa": "Investigación microscópica de herramientas líticas para determinar técnicas de manufactura, uso y procedencia de materiales en culturas precolombinas.",
+      "fecha": "2024",
+      "ubicacion": "Sonora, México",
+      "es_destacado": false,
+      "orden": 3,
+      "imagen_antes": {
+        "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Herramientas líticas antes del análisis"
+      },
+      "imagen_despues": {
+        "url": "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Herramientas catalogadas y estudiadas"
+      },
+      "galeria": []
+    },
+    {
+      "id": 4,
+      "titulo": "Documentación de Pinturas Rupestres",
+      "slug": "documentacion-pinturas-rupestres",
+      "descripcion_corta": "Registro digital de arte rupestre en cuevas",
+      "descripcion_completa": "Proyecto de documentación mediante fotogrametría y escaneo 3D de pinturas rupestres en peligro de deterioro por factores ambientales.",
+      "fecha": "2023",
+      "ubicacion": "Baja California, México",
+      "es_destacado": true,
+      "orden": 4,
+      "imagen_antes": {
+        "url": "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Pinturas rupestres antes de la documentación"
+      },
+      "imagen_despues": {
+        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "alternativeText": "Documentación digital completa"
+      },
+      "galeria": [
+        {
+          "url": "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+          "alternativeText": "Detalle de pinturas rupestres"
+        }
+      ]
+    }
+  ]
+}
