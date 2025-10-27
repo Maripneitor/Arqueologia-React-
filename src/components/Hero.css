@@ -93,9 +93,10 @@
   max-width: 100%;
 }
 
+/* CORRECCIÓN: Tamaños de fuente mejorados para móviles */
 .hero-title {
   font-family: var(--font-primary);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.75rem, 5vw, 4.5rem); /* ✅ Aumentado de 2.5rem a 2.75rem */
   font-weight: 700;
   line-height: 1.1;
   margin: 0;
@@ -110,7 +111,7 @@
 
 .hero-subtitle {
   font-family: var(--font-secondary);
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2rem); /* ✅ Aumentado de 1.25rem a 1.5rem */
   font-weight: 400;
   margin: 0;
   color: var(--color-gold);
@@ -124,7 +125,7 @@
 
 .hero-description {
   font-family: var(--font-secondary);
-  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-size: clamp(1.1rem, 2vw, 1.25rem); /* ✅ Aumentado de 1rem a 1.1rem */
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto;
@@ -155,6 +156,10 @@
   border: 2px solid transparent;
   max-width: 100%; /* ✅ NUEVO: Limita ancho del botón */
   white-space: nowrap; /* ✅ Mantiene texto en una línea */
+  min-height: 60px; /* ✅ Touch target adecuado */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-cta::before {
@@ -338,6 +343,7 @@ body {
   .hero-cta {
     padding: 0.875rem 2rem;
     font-size: 1rem;
+    min-height: 56px; /* ✅ Touch target móvil */
   }
 
   .hero-swiper .swiper-button-next,
@@ -350,26 +356,33 @@ body {
   }
 }
 
+/* CORRECCIÓN: Tamaños de fuente mejorados para móviles pequeños */
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.25rem; /* ✅ Aumentado de 2rem a 2.25rem */
     letter-spacing: -0.25px;
     padding: 0 0.5rem; /* ✅ Padding adicional para texto muy largo */
   }
 
   .hero-subtitle {
-    font-size: 1.125rem;
+    font-size: 1.25rem; /* ✅ Aumentado de 1.125rem a 1.25rem */
     padding: 0 0.5rem;
   }
 
   .hero-description {
-    font-size: 0.9rem;
+    font-size: 1rem; /* ✅ Aumentado de 0.9rem a 1rem */
     line-height: 1.5;
     padding: 0 0.5rem;
   }
 
   .hero-content {
     padding: 0 1rem; /* ✅ Padding mínimo en móviles muy pequeños */
+  }
+  
+  .hero-cta {
+    min-height: 52px; /* ✅ Touch target para móviles pequeños */
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
   }
   
   /* CORRECCIÓN EXTRA: Para viewports muy pequeños */

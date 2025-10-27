@@ -5,6 +5,13 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    allowedHosts: [
+      'soren-nonpresentational-incongrously.ngrok-free.dev',
+      'localhost'
+    ],
+    host: true // Permite conexiones externas
+  },
   test: {
     globals: true,
     environment: 'jsdom',

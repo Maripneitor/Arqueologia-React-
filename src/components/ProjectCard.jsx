@@ -1,4 +1,4 @@
-// src/components/ProjectCard.jsx
+// src/components/ProjectCard.jsx - OPTIMIZADO
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -79,6 +79,8 @@ export const ProjectCard = ({ project }) => {
               src={imagen_antes?.url} 
               alt={`${titulo} - Antes`}
               onLoad={handleImageLoad}
+              loading="lazy" // ✅ Lazy loading para imágenes below the fold
+              decoding="async"
             />
           </div>
 
@@ -93,6 +95,8 @@ export const ProjectCard = ({ project }) => {
               src={imagen_despues?.url} 
               alt={`${titulo} - Después`}
               onLoad={handleImageLoad}
+              loading="lazy" // ✅ Lazy loading para imágenes below the fold
+              decoding="async"
             />
           </motion.div>
 

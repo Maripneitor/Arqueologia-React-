@@ -160,6 +160,7 @@
   font-size: 1.1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-height: 60px; /* Touch target más grande */
 }
 
 .whatsapp-button:hover {
@@ -212,6 +213,7 @@
   font-size: 0.95rem;
 }
 
+/* CORRECCIÓN: Tamaños de touch targets para formularios móviles */
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -222,6 +224,12 @@
   font-size: 1rem;
   background: white;
   transition: all 0.3s ease;
+  min-height: 56px; /* Touch target más grande por defecto */
+}
+
+.form-group textarea {
+  min-height: 120px; /* Altura mínima para textarea */
+  resize: vertical;
 }
 
 .form-group input:focus,
@@ -230,11 +238,6 @@
   outline: none;
   border-color: var(--color-bronze);
   box-shadow: 0 0 0 3px rgba(205, 127, 50, 0.1);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
 }
 
 .submit-button {
@@ -254,6 +257,7 @@
   transition: all 0.3s ease;
   margin-top: 1rem;
   align-self: flex-start;
+  min-height: 60px; /* Touch target más grande */
 }
 
 .submit-button:hover:not(:disabled) {
@@ -281,7 +285,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive */
+/* CORRECCIÓN: Responsive mejorado para touch targets */
 @media (max-width: 1024px) {
   .contact-info-section {
     grid-template-columns: 1fr;
@@ -319,6 +323,27 @@
   .section-title {
     font-size: 1.75rem;
   }
+  
+  /* CORRECCIÓN: Touch targets más grandes en móviles */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    min-height: 52px; /* Touch target adecuado para móviles */
+    padding: 1rem 1.25rem;
+    font-size: 16px; /* Previene zoom en iOS */
+  }
+  
+  .submit-button {
+    min-height: 56px; /* Touch target adecuado para móviles */
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 2rem;
+  }
+  
+  .whatsapp-button {
+    min-height: 56px;
+    padding: 1rem 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -345,10 +370,35 @@
   .whatsapp-button {
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
+    min-height: 52px;
   }
   
   .submit-button {
-    width: 100%;
-    justify-content: center;
+    min-height: 52px;
+  }
+  
+  /* CORRECCIÓN EXTRA: Touch targets para elementos pequeños */
+  .contact-item {
+    min-height: 70px; /* Asegurar que toda el área sea tappable */
+    padding: 1.25rem;
+  }
+  
+  .contact-icon {
+    width: 44px;
+    height: 44px; /* Mínimo recomendado para touch */
+  }
+}
+
+/* Mejoras de accesibilidad adicionales */
+@media (max-width: 768px) {
+  /* Asegurar que los labels sean fácilmente tappables */
+  .form-group label {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Mejorar espaciado entre elementos del formulario */
+  .contact-form {
+    gap: 1.75rem;
   }
 }

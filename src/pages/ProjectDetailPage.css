@@ -58,6 +58,8 @@
 }
 
 .react-compare-slider {
+  height: 60vh; /* Altura para desktop */
+  max-height: 700px; /* Límite máximo para monitores grandes */
   border-radius: 12px !important;
 }
 
@@ -365,15 +367,11 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive */
+/* CORRECCIÓN: Responsive para el comparador */
 @media (max-width: 1024px) {
-  .project-info-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .project-sidebar {
-    position: static;
+  .react-compare-slider {
+    height: 55vh; /* Ligeramente más pequeño en tablets */
+    max-height: 500px;
   }
 }
 
@@ -393,6 +391,11 @@
   
   .comparator-container {
     border-radius: 8px;
+  }
+  
+  .react-compare-slider {
+    height: 40vh; /* Significativamente más pequeño en móviles */
+    max-height: 350px; /* Límite máximo en móviles */
   }
   
   .navigation-buttons {
@@ -432,5 +435,14 @@
   
   .meta-item {
     padding: 0.75rem 0;
+  }
+}
+
+/* Mejora: modo de alto contraste */
+@media (prefers-contrast: high) {
+  .image-label {
+    background: var(--color-earth);
+    color: var(--color-sand);
+    border: 2px solid var(--color-sand);
   }
 }

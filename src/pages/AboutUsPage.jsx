@@ -1,4 +1,4 @@
-// src/pages/AboutUsPage.jsx - Versión con animaciones de página
+// src/pages/AboutUsPage.jsx - Versión con optimizaciones de imágenes
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { RevealOnScroll } from '../components/RevealOnScroll';
@@ -169,6 +169,8 @@ export const AboutUsPage = () => {
                           src={member.foto?.url} 
                           alt={member.foto?.alternativeText || member.nombre}
                           className="photo-img"
+                          loading="lazy" // ✅ Lazy loading para imágenes del equipo
+                          decoding="async"
                         />
                       </div>
                       <div className="member-info">

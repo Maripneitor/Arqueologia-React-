@@ -1,5 +1,5 @@
-// src/pages/ProjectDetailPage.jsx - Actualizado con RevealOnScroll
-import React, { useState, useEffect } from 'react';
+// src/pages/ProjectDetailPage.jsx - Actualizado con RevealOnScroll y Optimizaciones
+import React, { useState, useEffect, lazy } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ReactCompareSlider } from 'react-compare-slider';
@@ -144,6 +144,8 @@ export const ProjectDetailPage = () => {
                       src={project.imagen_antes?.url} 
                       alt={`${project.titulo} - Antes`}
                       className="compare-image"
+                      loading="eager" // ✅ Carga prioritaria para imagen above the fold
+                      decoding="async"
                     />
                     <div className="image-label before">Antes</div>
                   </div>
@@ -154,6 +156,8 @@ export const ProjectDetailPage = () => {
                       src={project.imagen_despues?.url} 
                       alt={`${project.titulo} - Después`}
                       className="compare-image"
+                      loading="eager" // ✅ Carga prioritaria para imagen above the fold
+                      decoding="async"
                     />
                     <div className="image-label after">Después</div>
                   </div>
@@ -161,7 +165,6 @@ export const ProjectDetailPage = () => {
                 position={50}
                 className="react-compare-slider"
                 style={{
-                  height: '60vh',
                   borderRadius: '12px',
                   overflow: 'hidden'
                 }}
@@ -223,7 +226,7 @@ export const ProjectDetailPage = () => {
           </section>
         </RevealOnScroll>
 
-        {/* Galería adicional con RevealOnScroll */}
+        {/* Galería adicional con RevealOnScroll y lazy loading */}
         {project.galeria && project.galeria.length > 0 && (
           <RevealOnScroll delay={0.4}>
             <section className="gallery-section">
@@ -245,14 +248,17 @@ export const ProjectDetailPage = () => {
                   },
                 }}
                 className="gallery-swiper"
+                lazy={true} // ✅ Lazy loading nativo de Swiper
               >
                 {project.galeria.map((image, index) => (
                   <SwiperSlide key={index}>
                     <div className="gallery-slide">
                       <img 
                         src={image.url} 
-                        alt={image.alternativeText || `Galería ${index + 1}`}
+                        alt={image.alternativeText || `Galería ${index + 1} - ${project.titulo}`}
                         className="gallery-image"
+                        loading="lazy" // ✅ Lazy loading para imágenes de galería
+                        decoding="async"
                       />
                     </div>
                   </SwiperSlide>

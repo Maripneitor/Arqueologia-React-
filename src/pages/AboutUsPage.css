@@ -162,29 +162,42 @@
   margin-bottom: 4rem;
 }
 
-/* Personalización de la línea de tiempo vertical */
-.vertical-timeline::before {
-  background: var(--color-terracotta) !important;
+/* CORRECCIÓN: Espaciado uniforme para la línea de tiempo */
+.vertical-timeline {
+  padding: 2rem 0 !important;
+}
+
+.vertical-timeline-element {
+  margin-bottom: 3rem !important; /* Espaciado uniforme entre elementos */
+  position: relative;
+}
+
+.vertical-timeline-element:last-child {
+  margin-bottom: 0 !important; /* Eliminar margen del último elemento */
 }
 
 .vertical-timeline-element-content {
+  margin: 0 !important;
+  padding: 2rem !important;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
   border: 1px solid rgba(139, 90, 43, 0.1) !important;
   border-radius: 12px !important;
+  position: relative;
 }
 
-.vertical-timeline-element-title {
-  font-family: var(--font-primary) !important;
-  color: var(--color-earth) !important;
-  font-size: 1.25rem !important;
-  margin-bottom: 0.5rem !important;
+.vertical-timeline-element-content::before {
+  display: none !important; /* Ocultar la flecha por defecto si causa problemas */
 }
 
-.vertical-timeline-element p {
-  font-family: var(--font-secondary) !important;
-  color: var(--color-text) !important;
-  line-height: 1.6 !important;
-  margin: 0 !important;
+.vertical-timeline-element-icon {
+  width: 50px !important;
+  height: 50px !important;
+  margin-left: -25px !important;
+  box-shadow: 0 0 0 4px var(--color-sand), 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, var(--color-bronze), var(--color-gold)) !important;
 }
 
 .vertical-timeline-element-date {
@@ -192,6 +205,117 @@
   font-weight: 600 !important;
   color: var(--color-earth) !important;
   opacity: 0.8;
+  padding: 0.5rem 0 !important;
+  font-size: 1rem !important;
+}
+
+/* Asegurar espaciado consistente para todos los elementos */
+.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content,
+.vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
+  margin: 0 !important;
+}
+
+/* Línea central de la timeline */
+.vertical-timeline::before {
+  background: var(--color-terracotta) !important;
+  width: 3px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Estilos específicos para el título y descripción */
+.vertical-timeline-element-title {
+  font-family: var(--font-primary) !important;
+  color: var(--color-earth) !important;
+  font-size: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.3 !important;
+}
+
+.vertical-timeline-element p {
+  font-family: var(--font-secondary) !important;
+  color: var(--color-text) !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+}
+
+/* Responsive para la línea de tiempo */
+@media (max-width: 1169px) {
+  .vertical-timeline-element {
+    margin-bottom: 2.5rem !important;
+  }
+  
+  .vertical-timeline-element-icon {
+    width: 45px !important;
+    height: 45px !important;
+    margin-left: -22.5px !important;
+  }
+  
+  .vertical-timeline-element-content {
+    padding: 1.5rem !important;
+  }
+  
+  .vertical-timeline::before {
+    left: 30px !important;
+    transform: none !important;
+  }
+  
+  .vertical-timeline-element-date {
+    float: none !important;
+    margin: 0.5rem 0 0 0 !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .vertical-timeline-element {
+    margin-bottom: 2rem !important;
+  }
+  
+  .vertical-timeline-element-icon {
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: -20px !important;
+    left: 30px !important;
+  }
+  
+  .vertical-timeline-element-content {
+    margin-left: 70px !important;
+    padding: 1.25rem !important;
+  }
+  
+  .vertical-timeline-element-date {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .vertical-timeline-element {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .vertical-timeline-element-content {
+    margin-left: 60px !important;
+    padding: 1rem !important;
+  }
+  
+  .vertical-timeline-element-icon {
+    width: 35px !important;
+    height: 35px !important;
+    margin-left: -17.5px !important;
+    left: 30px !important;
+  }
+}
+
+/* Eliminar cualquier espaciado inconsistente de elementos hijos */
+.vertical-timeline-element-content *:first-child {
+  margin-top: 0 !important;
+}
+
+.vertical-timeline-element-content *:last-child {
+  margin-bottom: 0 !important;
 }
 
 /* Estados de carga y error */
