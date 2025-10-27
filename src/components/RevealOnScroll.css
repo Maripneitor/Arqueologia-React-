@@ -1,0 +1,21 @@
+/* src/components/RevealOnScroll.css */
+
+.reveal-on-scroll {
+  width: 100%;
+  will-change: transform, opacity, clip-path;
+}
+
+/* Mejora de rendimiento para dispositivos móviles */
+@media (max-width: 768px) {
+  .reveal-on-scroll {
+    transform: translateZ(0);
+  }
+}
+
+/* Modo de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    animation: none;
+    transition: none;
+  }
+}

@@ -43,3 +43,74 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
+/* Agregar al final de src/index.css */
+
+/* Estilos para el layout principal */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+/* Mejora de rendimiento para animaciones */
+* {
+  box-sizing: border-box;
+}
+
+/* Suavizado de scroll para navegadores que lo soportan */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejora de rendimiento para dispositivos móviles */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Modo de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Agregar al final de src/index.css */
+
+/* CORRECCIÓN GLOBAL: Prevenir scroll horizontal en toda la aplicación */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Asegurar que todos los contenedores principales no causen desbordamiento */
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.app-layout {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main-content {
+  width: 100%;
+  overflow-x: hidden;
+}

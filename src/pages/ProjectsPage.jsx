@@ -36,56 +36,13 @@ export const ProjectsPage = () => {
     fetchAllProjects();
   }, []);
 
-  // Variantes para animaciones
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
-  };
-
-  if (error) {
-    return (
-      <div className="projects-page error-page">
-        <div className="container">
-          <div className="error-message">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Error al cargar proyectos
-            </motion.h1>
-            <p>{error}</p>
-            <button 
-              onClick={() => window.location.reload()}
-              className="retry-button"
-            >
-              Reintentar
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <motion.div
       className="projects-page"
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="container">
         {/* Header de la página */}
@@ -113,21 +70,14 @@ export const ProjectsPage = () => {
             <p>Cargando proyectos...</p>
           </div>
         ) : projects.length > 0 ? (
-          <motion.div
-            className="projects-grid-container"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="projects-grid">
-              {projects.map((project) => (
-                <ProjectCard 
-                  key={project.id} 
-                  project={project}
-                />
-              ))}
-            </div>
-          </motion.div>
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <ProjectCard 
+                key={project.id} 
+                project={project}
+              />
+            ))}
+          </div>
         ) : (
           <motion.div
             className="no-projects"

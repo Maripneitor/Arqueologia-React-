@@ -48,43 +48,13 @@ export const ContactPage = () => {
     }, 2000);
   };
 
-  // Variantes para animaciones
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <motion.div
       className="contact-page"
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="container">
         {/* Header de la página */}
@@ -105,15 +75,12 @@ export const ContactPage = () => {
           {/* Información de contacto y mapa */}
           <motion.div
             className="contact-info-section"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             {/* Mapa */}
-            <motion.div
-              className="map-container"
-              variants={itemVariants}
-            >
+            <div className="map-container">
               <h2 className="section-title">Nuestra Ubicación</h2>
               <div className="map-wrapper">
                 <iframe
@@ -128,13 +95,10 @@ export const ContactPage = () => {
                   className="contact-map"
                 ></iframe>
               </div>
-            </motion.div>
+            </div>
 
             {/* Información de contacto */}
-            <motion.div
-              className="contact-details"
-              variants={itemVariants}
-            >
+            <div className="contact-details">
               <h2 className="section-title">Información de Contacto</h2>
               
               <div className="contact-items">
@@ -182,7 +146,6 @@ export const ContactPage = () => {
               {/* Botón de WhatsApp */}
               <motion.div
                 className="whatsapp-section"
-                variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -199,7 +162,7 @@ export const ContactPage = () => {
                   Respuesta inmediata en horario laboral
                 </p>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Formulario de contacto */}

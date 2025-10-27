@@ -1,6 +1,7 @@
-// src/pages/AboutUsPage.jsx - Versión con iconos válidos
+// src/pages/AboutUsPage.jsx - Versión con animaciones de página
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { RevealOnScroll } from '../components/RevealOnScroll';
 import {
   FaRocket,
   FaTools,
@@ -71,37 +72,15 @@ export const AboutUsPage = () => {
     return <IconComponent className="timeline-icon" />;
   };
 
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
   if (error) {
     return (
-      <div className="about-us-page error-page">
+      <motion.div
+        className="about-us-page error-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="container">
           <div className="error-message">
             <motion.h1
@@ -120,132 +99,115 @@ export const AboutUsPage = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
     <motion.div
       className="about-us-page"
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="container">
-        <motion.div
-          className="page-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="page-title">Nuestra Historia</h1>
-          <p className="page-subtitle">
-            Más de una década combinando la tradición arqueológica con la innovación tecnológica
-          </p>
-        </motion.div>
+        {/* Header con RevealOnScroll */}
+        <RevealOnScroll>
+          <div className="page-header">
+            <h1 className="page-title">Nuestra Historia</h1>
+            <p className="page-subtitle">
+              Más de una década combinando la tradición arqueológica con la innovación tecnológica
+            </p>
+          </div>
+        </RevealOnScroll>
 
         {isLoading ? (
-          <div className="loading-container">
-            <div className="loading-spinner large"></div>
-            <p>Cargando información...</p>
-          </div>
+          <RevealOnScroll>
+            <div className="loading-container">
+              <div className="loading-spinner large"></div>
+              <p>Cargando información...</p>
+            </div>
+          </RevealOnScroll>
         ) : (
           <>
-            {/* Sección de introducción */}
-            <motion.section
-              className="intro-section"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="intro-content">
-                <h2>Arqueología con Visión de Futuro</h2>
-                <p>
-                  Fundada en 2010, Arqueología Moderna nació con la misión de revolucionar 
-                  la práctica arqueológica mediante la integración de metodologías científicas 
-                  tradicionales con tecnologías digitales de vanguardia.
-                </p>
-                <p>
-                  Creemos que la arqueología del siglo XXI debe ser precisa, accesible 
-                  y sostenible. Por eso desarrollamos técnicas innovadoras que no solo 
-                  mejoran la documentación y análisis, sino que también facilitan la 
-                  divulgación y educación del patrimonio cultural.
-                </p>
-              </div>
-            </motion.section>
+            {/* Sección de introducción con RevealOnScroll */}
+            <RevealOnScroll delay={0.2}>
+              <section className="intro-section">
+                <div className="intro-content">
+                  <h2>Arqueología con Visión de Futuro</h2>
+                  <p>
+                    Fundada en 2010, Arqueología Moderna nació con la misión de revolucionar 
+                    la práctica arqueológica mediante la integración de metodologías científicas 
+                    tradicionales con tecnologías digitales de vanguardia.
+                  </p>
+                  <p>
+                    Creemos que la arqueología del siglo XXI debe ser precisa, accesible 
+                    y sostenible. Por eso desarrollamos técnicas innovadoras que no solo 
+                    mejoran la documentación y análisis, sino que también facilitan la 
+                    divulgación y educación del patrimonio cultural.
+                  </p>
+                </div>
+              </section>
+            </RevealOnScroll>
 
-            {/* Sección del equipo */}
-            <motion.section
-              className="team-section"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <h2 className="section-title">Nuestro Equipo</h2>
-              <p className="section-subtitle">
-                Profesionales apasionados por descubrir y preservar nuestra historia
-              </p>
+            {/* Sección del equipo con RevealOnScroll */}
+            <section className="team-section">
+              <RevealOnScroll>
+                <h2 className="section-title">Nuestro Equipo</h2>
+                <p className="section-subtitle">
+                  Profesionales apasionados por descubrir y preservar nuestra historia
+                </p>
+              </RevealOnScroll>
               
               <div className="team-grid">
-                {team.map((member) => (
-                  <motion.div
-                    key={member.id}
-                    className="team-card"
-                    variants={itemVariants}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className="member-photo">
-                      <img 
-                        src={member.foto?.url} 
-                        alt={member.foto?.alternativeText || member.nombre}
-                        className="photo-img"
-                      />
-                    </div>
-                    <div className="member-info">
-                      <h3 className="member-name">{member.nombre}</h3>
-                      <p className="member-position">{member.puesto}</p>
-                      <p className="member-bio">{member.bio}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.section>
-
-            {/* Sección de la línea de tiempo personalizada */}
-            <motion.section
-              className="timeline-section"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <h2 className="section-title">Nuestra Trayectoria</h2>
-              <p className="section-subtitle">
-                Hitos importantes en nuestro camino de innovación arqueológica
-              </p>
-              
-              <div className="custom-timeline">
-                {timeline.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                  >
-                    <div className="timeline-content">
-                      <div className="timeline-icon">
-                        {getTimelineIcon(item.icono)}
+                {team.map((member, index) => (
+                  <RevealOnScroll key={member.id} delay={0.1 * index}>
+                    <div className="team-card">
+                      <div className="member-photo">
+                        <img 
+                          src={member.foto?.url} 
+                          alt={member.foto?.alternativeText || member.nombre}
+                          className="photo-img"
+                        />
                       </div>
-                      <div className="timeline-year">{item.año}</div>
-                      <h3 className="timeline-title">{item.titulo}</h3>
-                      <p className="timeline-description">{item.descripcion}</p>
+                      <div className="member-info">
+                        <h3 className="member-name">{member.nombre}</h3>
+                        <p className="member-position">{member.puesto}</p>
+                        <p className="member-bio">{member.bio}</p>
+                      </div>
                     </div>
-                  </motion.div>
+                  </RevealOnScroll>
                 ))}
               </div>
-            </motion.section>
+            </section>
+
+            {/* Sección de la línea de tiempo personalizada con RevealOnScroll */}
+            <RevealOnScroll delay={0.4}>
+              <section className="timeline-section">
+                <h2 className="section-title">Nuestra Trayectoria</h2>
+                <p className="section-subtitle">
+                  Hitos importantes en nuestro camino de innovación arqueológica
+                </p>
+                
+                <div className="custom-timeline">
+                  {timeline.map((item, index) => (
+                    <RevealOnScroll key={item.id} delay={0.1 * index}>
+                      <div className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+                        <div className="timeline-content">
+                          <div className="timeline-icon">
+                            {getTimelineIcon(item.icono)}
+                          </div>
+                          <div className="timeline-year">{item.año}</div>
+                          <h3 className="timeline-title">{item.titulo}</h3>
+                          <p className="timeline-description">{item.descripcion}</p>
+                        </div>
+                      </div>
+                    </RevealOnScroll>
+                  ))}
+                </div>
+              </section>
+            </RevealOnScroll>
           </>
         )}
       </div>

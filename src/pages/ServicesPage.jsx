@@ -63,48 +63,15 @@ export const ServicesPage = () => {
     fetchServices();
   }, []);
 
-  // Variantes para animaciones
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      y: -5,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   if (error) {
     return (
-      <div className="services-page error-page">
+      <motion.div
+        className="services-page error-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div className="container">
           <div className="error-message">
             <motion.h1
@@ -123,18 +90,17 @@ export const ServicesPage = () => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
     <motion.div
       className="services-page"
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="container">
         {/* Header de la página */}
@@ -168,19 +134,15 @@ export const ServicesPage = () => {
             <p>Cargando servicios...</p>
           </div>
         ) : services.length > 0 ? (
-          <motion.div
-            className="services-container"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <div className="services-container">
             <div className="services-grid">
               {services.map((service) => (
                 <motion.div
                   key={service.id}
                   className="service-detail-card"
-                  variants={cardVariants}
-                  whileHover="hover"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   <div className="service-header">
                     <div className="service-icon-container">
@@ -230,7 +192,7 @@ export const ServicesPage = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
         ) : (
           <motion.div
             className="no-services"
