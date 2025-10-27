@@ -1,0 +1,60 @@
+{
+  "hitos": [
+    {
+      "id": 1,
+      "año": "2010",
+      "titulo": "Fundación",
+      "descripcion": "Creación de Arqueología Moderna con el objetivo de combinar metodologías tradicionales con tecnología de vanguardia.",
+      "icono": "FaRocket",
+      "orden": 1
+    },
+    {
+      "id": 2,
+      "año": "2012",
+      "titulo": "Primera Excavación Mayor",
+      "descripcion": "Proyecto de excavación en Teotihuacán que estableció nuevos estándares en documentación digital.",
+      "icono": "FaTools",
+      "orden": 2
+    },
+    {
+      "id": 3,
+      "año": "2015",
+      "titulo": "Laboratorio Propio",
+      "descripcion": "Inauguración de nuestro laboratorio de análisis de materiales con equipos de última generación.",
+      "icono": "FaMicroscope",
+      "orden": 3
+    },
+    {
+      "id": 4,
+      "año": "2017",
+      "titulo": "Reconocimiento Internacional",
+      "descripcion": "Premio a la Innovación en Arqueología por nuestro trabajo en fotogrametría aplicada a sitios patrimoniales.",
+      "icono": "FaAward",
+      "orden": 4
+    },
+    {
+      "id": 5,
+      "año": "2020",
+      "titulo": "Expansión Regional",
+      "descripcion": "Apertura de oficinas en 3 países de Latinoamérica y colaboración con 15 instituciones académicas.",
+      "icono": "FaGlobeAmericas",
+      "orden": 5
+    },
+    {
+      "id": 6,
+      "año": "2023",
+      "titulo": "Centro de Investigación",
+      "descripcion": "Establecimiento del Centro de Investigación en Arqueología Digital con fondos de cooperación internacional.",
+      "icono": "FaUniversity",
+      "orden": 6
+    },
+    {
+      "id": 7,
+      "año": "2024",
+      "titulo": "Proyecto Actual",
+      "descripcion": "Lanzamiento del programa de conservación comunitaria para sitios arqueológicos en riesgo.",
+      "icono": "FaHandsHelping",
+      "orden": 7
+    }
+  ]
+}

@@ -6,8 +6,11 @@ import { Footer } from './components/Footer';
 import { Hero } from './components/Hero';
 import { FeaturedProjects } from './components/FeaturedProjects';
 import { BriefServices } from './components/BriefServices';
+import { AboutUsPage } from './pages/AboutUsPage';
+import { ServicesPage } from './pages/ServicesPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import { ProjectDetailPage } from './pages/ProjectDetailPage'; // Nueva página
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
+import { ContactPage } from './pages/ContactPage';
 
 // Layout
 const Layout = () => {
@@ -37,11 +40,6 @@ const HomePage = () => (
   </div>
 );
 
-// Páginas restantes...
-const AboutPage = () => <div style={{ padding: '10rem' }}>Página de Nosotros</div>;
-const ServicesPage = () => <div style={{ padding: '10rem' }}>Página de Servicios</div>;
-const ContactPage = () => <div style={{ padding: '10rem' }}>Página de Contacto</div>;
-
 function App() {
   return (
     <Router>
@@ -49,8 +47,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="proyectos" element={<ProjectsPage />} />
-          <Route path="proyectos/:slug" element={<ProjectDetailPage />} /> {/* Nueva ruta */}
-          <Route path="nosotros" element={<AboutPage />} />
+          <Route path="proyectos/:slug" element={<ProjectDetailPage />} />
+          <Route path="nosotros" element={<AboutUsPage />} />
           <Route path="servicios" element={<ServicesPage />} />
           <Route path="contacto" element={<ContactPage />} />
         </Route>

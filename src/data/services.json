@@ -5,7 +5,7 @@
       "nombre": "Excavación Arqueológica",
       "slug": "excavacion-arqueologica",
       "descripcion_corta": "Excavaciones sistemáticas y documentación de sitios arqueológicos",
-      "descripcion_completa": "Realizamos excavaciones arqueológicas profesionales con metodología científica, documentación exhaustiva y preservación del contexto estratigráfico.",
+      "descripcion_completa": "Realizamos excavaciones arqueológicas profesionales con metodología científica, documentación exhaustiva y preservación del contexto estratigráfico. Nuestro equipo utiliza técnicas de excavación sistemática, registro tridimensional y análisis in situ para garantizar la máxima recuperación de información. Cada proyecto incluye documentación fotogramétrica, análisis de suelos y conservación preventiva de los materiales descubiertos.",
       "icono": "FaTools",
       "orden": 1
     },
@@ -14,7 +14,7 @@
       "nombre": "Análisis de Materiales",
       "slug": "analisis-materiales",
       "descripcion_corta": "Estudio científico de cerámica, lítica y otros materiales",
-      "descripcion_completa": "Análisis especializado de materiales arqueológicos mediante técnicas de laboratorio incluyendo microscopía, análisis de composición y datación.",
+      "descripcion_completa": "Análisis especializado de materiales arqueológicos mediante técnicas de laboratorio avanzadas. Incluimos microscopía petrográfica, análisis de composición elemental (XRF), datación por radiocarbono y estudios de procedencia. Nuestro laboratorio cuenta con equipos de última generación para determinar técnicas de manufactura, uso, cronología y rutas de intercambio de los materiales estudiados.",
       "icono": "FaMicroscope",
       "orden": 2
     },
@@ -23,9 +23,36 @@
       "nombre": "Restauración y Conservación",
       "slug": "restauracion-conservacion",
       "descripcion_corta": "Preservación y restauración de bienes culturales",
-      "descripcion_completa": "Servicios de conservación preventiva y restauración de objetos arqueológicos utilizando materiales y técnicas compatibles.",
+      "descripcion_completa": "Servicios integrales de conservación preventiva y restauración de objetos arqueológicos. Utilizamos materiales y técnicas compatibles con los originales, siguiendo los principios éticos de la conservación. Nuestros tratamientos incluyen limpieza mecánica y química, consolidación, reintegración volumétrica y documentación exhaustiva del proceso. Desarrollamos también planes de mantenimiento y monitoreo para la preservación a largo plazo.",
       "icono": "FaHistory",
       "orden": 3
+    },
+    {
+      "id": 4,
+      "nombre": "Prospección Arqueológica",
+      "slug": "prospeccion-arqueologica",
+      "descripcion_corta": "Localización y evaluación de sitios arqueológicos",
+      "descripcion_completa": "Servicios de prospección sistemática para la localización y evaluación de sitios arqueológicos. Combinamos métodos tradicionales (recorridos de superficie) con tecnología de vanguardia (georradar, magnetometría, LIDAR). Nuestros informes incluyen cartografía detallada, evaluación del potencial arqueológico y recomendaciones para la gestión del patrimonio identificado.",
+      "icono": "FaMapMarkedAlt",
+      "orden": 4
+    },
+    {
+      "id": 5,
+      "nombre": "Documentación Digital",
+      "slug": "documentacion-digital",
+      "descripcion_corta": "Registro tridimensional y modelado de sitios arqueológicos",
+      "descripcion_completa": "Servicios de documentación digital mediante fotogrametría, escaneo láser 3D y tecnologías de captura de realidad. Generamos modelos tridimensionales precisos, ortofotos georreferenciadas y documentación métrica exhaustiva. Nuestros productos incluyen bases de datos espaciales, visualizaciones interactivas y archivos para impresión 3D, ideal para investigación, divulgación y conservación.",
+      "icono": "FaSearch",
+      "orden": 5
+    },
+    {
+      "id": 6,
+      "nombre": "Asesoría en Gestión Patrimonial",
+      "slug": "asesoria-gestion-patrimonial",
+      "descripcion_corta": "Consultoría para la protección y gestión del patrimonio cultural",
+      "descripcion_completa": "Servicios de consultoría especializada en gestión del patrimonio arqueológico. Desarrollamos planes de manejo, evaluaciones de impacto patrimonial, programas de monitoreo y estrategias de conservación. Trabajamos con instituciones públicas, privadas y comunidades para garantizar la protección sostenible del patrimonio cultural en proyectos de desarrollo e investigación.",
+      "icono": "FaBook",
+      "orden": 6
     }
   ]
 }

@@ -1,0 +1,70 @@
+{
+  "equipo": [
+    {
+      "id": 1,
+      "nombre": "Dra. Elena Mendoza",
+      "puesto": "Directora de Arqueología",
+      "bio": "Especialista en culturas mesoamericanas con más de 15 años de experiencia en excavaciones. PhD en Arqueología por la Universidad Nacional Autónoma de México.",
+      "foto": {
+        "url": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "alternativeText": "Dra. Elena Mendoza - Directora de Arqueología"
+      },
+      "orden": 1
+    },
+    {
+      "id": 2,
+      "nombre": "Dr. Carlos Rivera",
+      "puesto": "Especialista en Conservación",
+      "bio": "Experto en conservación de materiales arqueológicos y análisis de deterioro. Ha trabajado en proyectos de la UNESCO en América Latina.",
+      "foto": {
+        "url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "alternativeText": "Dr. Carlos Rivera - Especialista en Conservación"
+      },
+      "orden": 2
+    },
+    {
+      "id": 3,
+      "nombre": "Lic. Sofia Torres",
+      "puesto": "Arqueóloga de Campo",
+      "bio": "Especializada en técnicas de excavación estratigráfica y documentación digital. Maestría en Arqueología Prehispánica.",
+      "foto": {
+        "url": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "alternativeText": "Lic. Sofia Torres - Arqueóloga de Campo"
+      },
+      "orden": 3
+    },
+    {
+      "id": 4,
+      "nombre": "Mtro. Javier López",
+      "puesto": "Analista de Materiales",
+      "bio": "Experto en análisis cerámico y lítico. Utiliza técnicas de microscopía y espectrometría para determinar procedencia de materiales.",
+      "foto": {
+        "url": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "alternativeText": "Mtro. Javier López - Analista de Materiales"
+      },
+      "orden": 4
+    },
+    {
+      "id": 5,
+      "nombre": "Ing. Ana García",
+      "puesto": "Especialista en Tecnología",
+      "bio": "Desarrolla aplicaciones de fotogrametría y modelado 3D para documentación arqueológica. Ingeniera en Sistemas con maestría en Patrimonio Digital.",
+      "foto": {
+        "url": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "alternativeText": "Ing. Ana García - Especialista en Tecnología"
+      },
+      "orden": 5
+    },
+    {
+      "id": 6,
+      "nombre": "Dr. Roberto Silva",
+      "puesto": "Investigador Senior",
+      "bio": "Pionero en estudios de paleoambiente y arqueología del paisaje. Ha publicado más de 50 artículos científicos en revistas internacionales.",
+      "foto": {
+        "url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+        "alternativeText": "Dr. Roberto Silva - Investigador Senior"
+      },
+      "orden": 6
+    }
+  ]
+}
