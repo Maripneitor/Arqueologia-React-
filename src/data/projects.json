@@ -2,100 +2,247 @@
   "proyectos": [
     {
       "id": 1,
-      "titulo": "Excavación Templo Maya",
-      "slug": "excavacion-templo-maya",
-      "descripcion_corta": "Descubrimiento y restauración de templo maya del período clásico",
-      "descripcion_completa": "Proyecto de excavación extensiva que reveló un templo maya completo con jeroglíficos intactos. El trabajo incluyó documentación 3D, análisis de materiales y conservación preventiva.",
+      "titulo": "Restauración Fotos de Caridad",
+      "slug": "fotos-caridad",
+      "descripcion_corta": "Intervención y restauración de fotografías patrimoniales.",
+      "descripcion_completa": "Proyecto de conservación y restauración de un archivo fotográfico histórico, aplicando técnicas de limpieza, consolidación y digitalización para su preservación.",
       "fecha": "2024",
-      "ubicacion": "Peten, Guatemala",
+      "ubicacion": "San Cristóbal de las Casas, Chiapas",
       "es_destacado": true,
       "orden": 1,
       "imagen_antes": {
-        "url": "https://images.unsplash.com/photo-1583324114697-6d44a77e7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Excavación en progreso del templo maya"
+        "url": "/images/fotos-caridad/Fotos de Caridad-Principal.webp",
+        "alternativeText": "Fotografía antigua antes de la restauración"
       },
       "imagen_despues": {
-        "url": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Templo maya restaurado"
+        "url": "/images/fotos-caridad/fotos-caridad-despues.webp",
+        "alternativeText": "Fotografía antigua después de la restauración"
       },
       "galeria": [
         {
-          "url": "https://images.unsplash.com/photo-1540555700478-4be289d6b6b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-          "alternativeText": "Detalle de jeroglíficos"
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-01.webp",
+          "alternativeText": "Detalle de restauración fotográfica 1"
         },
         {
-          "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-          "alternativeText": "Herramientas de excavación"
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-02.webp",
+          "alternativeText": "Detalle de restauración fotográfica 2"
+        },
+        {
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-03.webp",
+          "alternativeText": "Detalle de restauración fotográfica 3"
+        },
+        {
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-04.webp",
+          "alternativeText": "Detalle de restauración fotográfica 4"
+        },
+        {
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-05.webp",
+          "alternativeText": "Detalle de restauración fotográfica 5"
+        },
+        {
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-06.webp",
+          "alternativeText": "Detalle de restauración fotográfica 6"
+        },
+        {
+          "url": "/images/fotos-caridad/fotos-caridad-galeria-07.webp",
+          "alternativeText": "Detalle de restauración fotográfica 7"
         }
       ]
     },
     {
       "id": 2,
-      "titulo": "Restauración Cerámica Prehispánica",
-      "slug": "restauracion-ceramica",
-      "descripcion_corta": "Reconstrucción de piezas cerámicas antiguas usando técnicas tradicionales",
-      "descripcion_completa": "Proyecto de restauración que recuperó más de 50 piezas cerámicas utilizando métodos arqueológicos tradicionales combinados con tecnología moderna para análisis de pigmentos.",
+      "titulo": "Intervención Catedral de San Cristóbal",
+      "slug": "catedral-sancristobal",
+      "descripcion_corta": "Restauración de elementos arquitectónicos y retablos.",
+      "descripcion_completa": "El proyecto se centró en la consolidación estructural y la restauración pictórica de los retablos principales de la Catedral, así como la limpieza y estabilización de las fachadas.",
       "fecha": "2023",
-      "ubicacion": "Oaxaca, México",
+      "ubicacion": "San Cristóbal de las Casas, Chiapas",
       "es_destacado": true,
       "orden": 2,
       "imagen_antes": {
-        "url": "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Fragmentos cerámicos antes de la restauración"
+        "url": "/images/Catedral/Sancris08.webp",
+        "alternativeText": "Catedral de San Cristóbal antes de la intervención"
       },
       "imagen_despues": {
-        "url": "https://images.unsplash.com/photo-1540555700478-4be289d6b6b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Cerámica restaurada exhibida"
+        "url": "/images/Catedral/catedral-galeria-01.webp",
+        "alternativeText": "Retablo de la Catedral restaurado"
       },
       "galeria": [
         {
-          "url": "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-          "alternativeText": "Proceso de restauración"
+          "url": "/images/Catedral/catedral-galeria-01.webp",
+          "alternativeText": "Galería Catedral 1"
+        },
+        {
+          "url": "/images/Catedral/catedral-galeria-02.webp",
+          "alternativeText": "Galería Catedral 2"
+        },
+        {
+          "url": "/images/Catedral/catedral-galeria-03.webp",
+          "alternativeText": "Galería Catedral 3"
+        },
+        {
+          "url": "/images/Catedral/catedral-galeria-04.webp",
+          "alternativeText": "Galería Catedral 4"
+        },
+        {
+          "url": "/images/Catedral/catedral-galeria-05.webp",
+          "alternativeText": "Galería Catedral 5"
         }
       ]
     },
     {
       "id": 3,
-      "titulo": "Análisis de Herramientas Líticas",
-      "slug": "analisis-herramientas-liticas",
-      "descripcion_corta": "Estudio científico de herramientas de piedra antiguas",
-      "descripcion_completa": "Investigación microscópica de herramientas líticas para determinar técnicas de manufactura, uso y procedencia de materiales en culturas precolombinas.",
-      "fecha": "2024",
-      "ubicacion": "Sonora, México",
-      "es_destacado": false,
+      "titulo": "Restauración Hacienda Bajucú",
+      "slug": "hacienda-bajucu",
+      "descripcion_corta": "Consolidación y restauración de la casa principal.",
+      "descripcion_completa": "Intervención integral en la Hacienda Bajucú, enfocada en la estabilización de muros, techumbres y la restauración de acabados originales de la casa principal.",
+      "fecha": "2023",
+      "ubicacion": "Bajucú, Chiapas",
+      "es_destacado": true,
       "orden": 3,
       "imagen_antes": {
-        "url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Herramientas líticas antes del análisis"
+        "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-01.webp",
+        "alternativeText": "Hacienda Bajucú antes de la restauración"
       },
       "imagen_despues": {
-        "url": "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Herramientas catalogadas y estudiadas"
-      },
-      "galeria": []
-    },
-    {
-      "id": 4,
-      "titulo": "Documentación de Pinturas Rupestres",
-      "slug": "documentacion-pinturas-rupestres",
-      "descripcion_corta": "Registro digital de arte rupestre en cuevas",
-      "descripcion_completa": "Proyecto de documentación mediante fotogrametría y escaneo 3D de pinturas rupestres en peligro de deterioro por factores ambientales.",
-      "fecha": "2023",
-      "ubicacion": "Baja California, México",
-      "es_destacado": true,
-      "orden": 4,
-      "imagen_antes": {
-        "url": "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Pinturas rupestres antes de la documentación"
-      },
-      "imagen_despues": {
-        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        "alternativeText": "Documentación digital completa"
+        "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-02.webp",
+        "alternativeText": "Hacienda Bajucú después de la restauración"
       },
       "galeria": [
         {
-          "url": "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-          "alternativeText": "Detalle de pinturas rupestres"
+          "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-01.webp",
+          "alternativeText": "Galería Hacienda Bajucú 1"
+        },
+        {
+          "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-02.webp",
+          "alternativeText": "Galería Hacienda Bajucú 2"
+        },
+        {
+          "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-03.webp",
+          "alternativeText": "Galería Hacienda Bajucú 3"
+        },
+        {
+          "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-04.webp",
+          "alternativeText": "Galería Hacienda Bajucú 4"
+        },
+        {
+          "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-05.webp",
+          "alternativeText": "Galería Hacienda Bajucú 5"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "titulo": "Restauración Capilla de Bajucú",
+      "slug": "capilla-bajucu",
+      "descripcion_corta": "Intervención en la capilla histórica de la hacienda.",
+      "descripcion_completa": "Se realizaron trabajos de consolidación en la estructura de la capilla, restauración de la fachada y recuperación de los elementos interiores y pictóricos.",
+      "fecha": "2023",
+      "ubicacion": "Bajucú, Chiapas",
+      "es_destacado": false,
+      "orden": 4,
+      "imagen_antes": {
+        "url": "/images/capilla-bajucu/capilla-bajucu.webp",
+        "alternativeText": "Capilla de Bajucú antes de la restauración"
+      },
+      "imagen_despues": {
+        "url": "/images/capilla-bajucu/capilla-bajucu-galeria-01.webp",
+        "alternativeText": "Capilla de Bajucú después de la restauración"
+      },
+      "galeria": [
+        {
+          "url": "/images/capilla-bajucu/capilla-bajucu-galeria-01.webp",
+          "alternativeText": "Galería Capilla Bajucú 1"
+        },
+        {
+          "url": "/images/capilla-bajucu/capilla-bajucu-galeria-02.webp",
+          "alternativeText": "Galería Capilla Bajucú 2"
+        },
+        {
+          "url": "/images/capilla-bajucu/capilla-bajucu-galeria-03.webp",
+          "alternativeText": "Galería Capilla Bajucú 3"
+        },
+        {
+          "url": "/images/capilla-bajucu/capilla-bajucu-galeria-04.webp",
+          "alternativeText": "Galería Capilla Bajucú 4"
+        },
+        {
+          "url": "/images/capilla-bajucu/capilla-bajucu-galeria-05.webp",
+          "alternativeText": "Galería Capilla Bajucú 5"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "titulo": "UNICACH Sede Carranza",
+      "slug": "unicach-carranza",
+      "descripcion_corta": "Adecuación e intervención de la sede universitaria.",
+      "descripcion_completa": "Proyecto de adecuación de espacios históricos para su uso como sede universitaria, balanceando la conservación patrimonial con las necesidades funcionales modernas.",
+      "fecha": "2022",
+      "ubicacion": "Venustiano Carranza, Chiapas",
+      "es_destacado": false,
+      "orden": 5,
+      "imagen_antes": {
+        "url": "/images/unicach-carranza/unicach-carranza.webp",
+        "alternativeText": "UNICACH Sede Carranza antes de la adecuación"
+      },
+      "imagen_despues": {
+        "url": "/images/unicach-carranza/unicach-carranza-galeria-02.webp",
+        "alternativeText": "UNICACH Sede Carranza después de la adecuación"
+      },
+      "galeria": [
+        {
+          "url": "/images/unicach-carranza/unicach-carranza-galeria-02.webp",
+          "alternativeText": "Galería UNICACH Carranza 1"
+        },
+        {
+          "url": "/images/unicach-carranza/unicach-carranza-galeria-03.webp",
+          "alternativeText": "Galería UNICACH Carranza 2"
+        },
+        {
+          "url": "/images/unicach-carranza/unicach-carranza-galeria-04.webp",
+          "alternativeText": "Galería UNICACH Carranza 3"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "titulo": "UNICACH Escuela de Artes",
+      "slug": "unicach-artes",
+      "descripcion_corta": "Restauración y adaptación de la Escuela de Artes.",
+      "descripcion_completa": "Intervención en la sede de la Escuela de Artes de la UNICACH, enfocada en la restauración de sus elementos patrimoniales y la creación de espacios funcionales para la enseñanza artística.",
+      "fecha": "2022",
+      "ubicacion": "Tuxtla Gutiérrez, Chiapas",
+      "es_destacado": true,
+      "orden": 6,
+      "imagen_antes": {
+        "url": "/images/unicach-carranza2/unicach-carranza2-galeria-01.webp",
+        "alternativeText": "UNICACH Escuela de Artes antes de la restauración"
+      },
+      "imagen_despues": {
+        "url": "/images/unicach-carranza2/unicach-carranza2.webp",
+        "alternativeText": "UNICACH Escuela de Artes después de la restauración"
+      },
+      "galeria": [
+        {
+          "url": "/images/unicach-carranza2/unicach-carranza2-galeria-01.webp",
+          "alternativeText": "Galería UNICACH Artes 1"
+        },
+        {
+          "url": "/images/unicach-carranza2/unicach-carranza2-galeria-02.webp",
+          "alternativeText": "Galería UNICACH Artes 2"
+        },
+        {
+          "url": "/images/unicach-carranza2/unicach-carranza2-galeria-03.webp",
+          "alternativeText": "Galería UNICACH Artes 3"
+        },
+        {
+          "url": "/images/unicach-carranza2/unicach-carranza2-galeria-04.webp",
+          "alternativeText": "Galería UNICACH Artes 4"
+        },
+        {
+          "url": "/images/unicach-carranza2/unicach-carranza2-galeria-05.webp",
+          "alternativeText": "Galería UNICACH Artes 5"
         }
       ]
     }

@@ -29,29 +29,35 @@ export const Hero = () => {
     setLoadedImages(prev => ({ ...prev, [imageId]: true }));
   }, []);
 
+  // ===== INICIO DE LA MODIFICACIÓN =====
+  // Reemplazamos los datos de Unsplash con los de tus proyectos.
   const slides = [
     {
       id: 1,
-      title: "Descubre Civilizaciones Perdidas",
-      subtitle: "Explorando los misterios del pasado",
-      image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      description: "Sumérgete en la historia de antiguas civilizaciones y descubre tesoros arqueológicos únicos."
+      title: "Restauración Catedral de San Cristóbal",
+      subtitle: "Preservando nuestro patrimonio cultural",
+      // Esta es la nueva ruta a tu imagen en la carpeta 'public'
+      image: "/images/Catedral/Sancris08.webp",
+      description: "Intervención de elementos arquitectónicos y restauración pictórica de retablos."
     },
     {
       id: 2,
-      title: "Excavaciones Arqueológicas",
-      subtitle: "Preservando nuestro patrimonio cultural",
-      image: "https://images.unsplash.com/photo-1583324114697-6d44a77e7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      description: "Trabajamos meticulosamente para desenterrar y conservar los secretos del pasado."
+      title: "Hacienda Bajucú",
+      subtitle: "Consolidación y restauración histórica",
+      // Esta es la nueva ruta a tu imagen en la carpeta 'public'
+      image: "/images/hacienda-bajucu/hacienda-bajucu-galeria-02.webp",
+      description: "Estabilización de muros, techumbres y recuperación de acabados originales."
     },
     {
       id: 3,
-      title: "Tecnología y Arqueología",
-      subtitle: "Innovación al servicio de la historia",
-      image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      description: "Combinamos técnicas tradicionales con tecnología de vanguardia para descubrir la verdad histórica."
+      title: "UNICACH Escuela de Artes",
+      subtitle: "Adaptación de espacios patrimoniales",
+      // Esta es la nueva ruta a tu imagen en la carpeta 'public'
+      image: "/images/unicach-carranza2/unicach-carranza2.webp",
+      description: "Balanceando la conservación con las necesidades funcionales modernas."
     }
   ];
+  // ===== FIN DE LA MODIFICACIÓN =====
 
   // Variantes mejoradas para animaciones - CORREGIDO
   const textMaskVariants = {
