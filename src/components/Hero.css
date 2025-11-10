@@ -425,3 +425,24 @@ body {
     animation: none;
   }
 }
+
+/* ===== INICIO DE LA MODIFICACIÓN ===== */
+/* Estilos para el indicador de scroll */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--color-sand);
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+
+/* Ocultarlo en pantallas pequeñas donde ya está la paginación */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
+/* ===== FIN DE LA MODIFICACIÓN ===== */

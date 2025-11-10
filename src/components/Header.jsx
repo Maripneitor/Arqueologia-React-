@@ -12,7 +12,6 @@ export const Header = () => {
   
   const { scrollY } = useScroll();
 
-  // Detectar scroll para cambiar fondo del header
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 100) {
       setIsScrolled(true);
@@ -21,51 +20,41 @@ export const Header = () => {
     }
   });
 
-  // Cerrar menú móvil al hacer clic en un enlace
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Variantes para animaciones
   const headerVariants = {
-    transparent: { backgroundColor: 'rgba(0, 0, 0, 0)' },
-    solid: { backgroundColor: 'var(--color-bg)' },
+    transparent: { 
+      backgroundColor: 'rgba(245, 240, 230, 0)', 
+      paddingTop: '1.5rem', 
+      paddingBottom: '1.5rem' 
+    },
+    solid: { 
+      backgroundColor: 'var(--color-bg)', 
+      paddingTop: '1rem', 
+      paddingBottom: '1rem' 
+    },
   };
+  
+  const logoVariants = {
+    transparent: { scale: 1 },
+    solid: { scale: 0.9 },
+  }
 
-  const linkVariants = {
-    hover: { color: 'var(--color-hover)', y: -2 },
-    tap: { scale: 0.95 }
-  };
+  // ===== INICIO DE LA MODIFICACIÓN =====
+  // 1. Quitar variantes de link que no usaremos
+  // const linkVariants = { ... };
+  // ===== FIN DE LA MODIFICACIÓN =====
 
   const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      x: '100%',
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+    closed: { opacity: 0, x: '100%', transition: { duration: 0.3, ease: "easeInOut" }},
+    open: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" }}
   };
 
   const navItemVariants = {
     closed: { opacity: 0, x: 20 },
-    open: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    }
+    open: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" }}
   };
 
   const navItems = [
@@ -84,35 +73,56 @@ export const Header = () => {
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className="header-content">
-        {/* Logo */}
-        <Link 
-          to="/" 
-          className="header-logo"
-          onClick={handleNavClick}
+        <motion.div
+          variants={logoVariants}
+          animate={isScrolled ? "solid" : "transparent"}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="header-logo-wrapper"
         >
-          Empresa Arqueología
-        </Link>
+          <Link 
+            to="/" 
+            className="header-logo"
+            onClick={handleNavClick}
+          >
+            Empresa Arqueología
+          </Link>
+        </motion.div>
 
-        {/* Navegación Desktop - Solo visible en >= 768px */}
         <nav className="header-nav desktop-nav">
-          {navItems.map((item) => (
-            <motion.div 
-              key={item.path}
-              variants={linkVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Link 
-                to={item.path}
-                className={location.pathname === item.path ? 'nav-link active' : 'nav-link'}
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              // ===== INICIO DE LA MODIFICACIÓN =====
+              // 2. Añadir whileHover y position: relative al div
+              <motion.div 
+                key={item.path}
+                className="nav-item-wrapper"
+                whileHover="hover"
+                animate={isActive ? "active" : "inactive"}
               >
-                {item.label}
-              </Link>
-            </motion.div>
-          ))}
+                <Link 
+                  to={item.path}
+                  className={isActive ? 'nav-link active' : 'nav-link'}
+                >
+                  {item.label}
+                </Link>
+                
+                {/* 3. Añadir la línea animada */}
+                <motion.span
+                  className="nav-link-underline"
+                  variants={{
+                    inactive: { scaleX: 0 },
+                    active: { scaleX: 1 },
+                    hover: { scaleX: 1 }
+                  }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                />
+              </motion.div>
+              // ===== FIN DE LA MODIFICACIÓN =====
+            )
+          })}
         </nav>
 
-        {/* Botón Hamburguesa - Solo visible en < 768px */}
         <motion.button
           className="mobile-menu-button"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -128,7 +138,6 @@ export const Header = () => {
           )}
         </motion.button>
 
-        {/* Overlay del Menú Móvil */}
         <AnimatePresence mode="wait">
           {isMobileMenuOpen && (
             <motion.div
@@ -138,13 +147,10 @@ export const Header = () => {
               animate="open"
               exit="closed"
             >
-              {/* Fondo del overlay */}
               <div 
                 className="overlay-background"
                 onClick={() => setIsMobileMenuOpen(false)}
               />
-              
-              {/* Contenido del menú móvil */}
               <motion.nav 
                 className="mobile-nav"
                 variants={mobileMenuVariants}
@@ -152,7 +158,6 @@ export const Header = () => {
                 animate="open"
                 exit="closed"
               >
-                {/* Encabezado del menú móvil */}
                 <div className="mobile-nav-header">
                   <h2 className="mobile-nav-title">Navegación</h2>
                   <motion.button
@@ -166,7 +171,6 @@ export const Header = () => {
                   </motion.button>
                 </div>
 
-                {/* Items de navegación móvil */}
                 <ul className="mobile-nav-list">
                   {navItems.map((item, index) => (
                     <motion.li
@@ -198,7 +202,6 @@ export const Header = () => {
                   ))}
                 </ul>
 
-                {/* Información de contacto en móvil */}
                 <motion.div 
                   className="mobile-contact-info"
                   variants={navItemVariants}
@@ -207,7 +210,7 @@ export const Header = () => {
                   transition={{ delay: 0.5 }}
                 >
                   <p>📧 info@empresa-arqueologia.com</p>
-                  <p>📞 +52 961-129-0622</p>
+                  <p>📞 +34 912 345 678</p>
                 </motion.div>
               </motion.nav>
             </motion.div>

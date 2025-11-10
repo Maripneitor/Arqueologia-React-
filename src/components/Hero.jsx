@@ -3,7 +3,8 @@ import React, { useRef, useState, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { Link } from 'react-router-dom'; // <--- 1. IMPORTAR LINK
+import { Link } from 'react-router-dom';
+import { FaArrowDown } from 'react-icons/fa'; // <--- 1. IMPORTAR FLECHA
 
 // Importaciones CSS de Swiper
 import 'swiper/css';
@@ -33,7 +34,7 @@ export const Hero = () => {
       id: 1,
       title: "Restauración Catedral de San Cristóbal",
       subtitle: "Preservando nuestro patrimonio cultural",
-      image: "/images/Catedral/Sancris08.webp",
+      image: "/images/Catedral/catedral-galeria-01.webp",
       description: "Intervención de elementos arquitectónicos y restauración pictórica de retablos."
     },
     {
@@ -47,7 +48,7 @@ export const Hero = () => {
       id: 3,
       title: "UNICACH Escuela de Artes",
       subtitle: "Adaptación de espacios patrimoniales",
-      image: "/images/unicach-carranza2/unicach-carranza2.webp",
+      image: "/images/unicach-carranza2/unicach-carranza2-galeria-01.webp",
       description: "Balanceando la conservación con las necesidades funcionales modernas."
     }
   ];
@@ -138,7 +139,7 @@ export const Hero = () => {
                     {slide.title}
                   </motion.h1>
                 </div>
-
+                {/* ... (resto del contenido de texto) ... */}
                 <div className="subtitle-mask">
                   <motion.h2
                     className="hero-subtitle"
@@ -161,11 +162,9 @@ export const Hero = () => {
                   className="cta-mask"
                   variants={textMaskVariants}
                 >
-                  {/* ===== 2. AQUÍ ESTÁ EL CAMBIO ===== */}
                   <Link to="/proyectos" className="hero-cta">
                     Explorar Proyectos
                   </Link>
-                  {/* ================================ */}
                 </motion.div>
               </motion.div>
             </div>
@@ -175,6 +174,17 @@ export const Hero = () => {
         <div className="swiper-button-next"></div>
         <div className="swiper-button-prev"></div>
       </Swiper>
+      
+      {/* ===== 2. AÑADIR INDICADOR DE SCROLL AQUÍ ===== */}
+      <motion.div 
+        className="scroll-indicator"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.5, duration: 0.5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+      >
+        <FaArrowDown />
+      </motion.div>
+      {/* =========================================== */}
     </section>
   );
 };

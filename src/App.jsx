@@ -1,4 +1,4 @@
-// src/App.jsx - CORREGIDO CON NUEVA RUTA DE SERVICIOS
+// src/App.jsx - ACTUALIZADO CON SCROLL TO TOP
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
@@ -9,8 +9,9 @@ import { motion } from 'framer-motion';
 import { FeaturedProjects } from './components/FeaturedProjects';
 import { BriefServices } from './components/BriefServices';
 import { Loader } from './components/Loader';
-import { RevealOnScroll } from './components/RevealOnScroll'; // Importar RevealOnScroll
-import { Link } from 'react-router-dom'; // Importar Link
+import { RevealOnScroll } from './components/RevealOnScroll';
+import { Link } from 'react-router-dom';
+import { ScrollToTopButton } from './components/ScrollToTopButton'; // <--- 1. IMPORTAR
 
 // Carga diferida de páginas
 const AboutUsPage = lazy(() => 
@@ -28,13 +29,10 @@ const ProjectDetailPage = lazy(() =>
 const ContactPage = lazy(() => 
   import('./pages/ContactPage').then(module => ({ default: module.ContactPage }))
 );
-
-// ===== INICIO DE LA MODIFICACIÓN =====
-// 1. AÑADIR NUEVA PÁGINA DE DETALLE DE SERVICIO
+// Importamos la página de detalle de servicio que ya creamos
 const ServiceDetailPage = lazy(() => 
   import('./pages/ServiceDetailPage').then(module => ({ default: module.ServiceDetailPage }))
 );
-// ===== FIN DE LA MODIFICACIÓN =====
 
 
 // Componente de carga para Suspense
@@ -95,8 +93,6 @@ const HomePage = () => (
     <FeaturedProjects />
     <BriefServices />
 
-    {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
-    {/* 2. MEJORAR EL CTA DEL HOME */}
     <RevealOnScroll>
       <section className="cta-section home-cta">
         <div className="cta-content">
@@ -113,7 +109,6 @@ const HomePage = () => (
         </div>
       </section>
     </RevealOnScroll>
-    {/* ===== FIN DE LA MODIFICACIÓN ===== */}
   </motion.div>
 );
 
@@ -124,7 +119,7 @@ function App() {
     // Simular tiempo de carga de recursos
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500); // 2.5 segundos para permitir que las animaciones del loader se completen
+    }, 2500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -136,6 +131,10 @@ function App() {
       </AnimatePresence>
       
       <Router>
+        {/* ===== 2. AÑADIR EL BOTÓN AQUÍ ===== */}
+        <ScrollToTopButton />
+        {/* ================================== */}
+
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -143,12 +142,7 @@ function App() {
             <Route path="proyectos/:slug" element={<ProjectDetailPage />} />
             <Route path="nosotros" element={<AboutUsPage />} />
             <Route path="servicios" element={<ServicesPage />} />
-            
-            {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
-            {/* 3. AÑADIR NUEVA RUTA */}
             <Route path="servicios/:slug" element={<ServiceDetailPage />} />
-            {/* ===== FIN DE LA MODIFICACIÓN ===== */}
-            
             <Route path="contacto" element={<ContactPage />} />
           </Route>
         </Routes>

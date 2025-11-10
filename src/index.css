@@ -43,7 +43,6 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
-/* Agregar al final de src/index.css */
 
 /* Estilos para el layout principal */
 .app-layout {
@@ -89,8 +88,6 @@ html {
     scroll-behavior: auto;
   }
 }
-
-/* Agregar al final de src/index.css */
 
 /* CORRECCIÓN GLOBAL: Prevenir scroll horizontal en toda la aplicación */
 html, body {

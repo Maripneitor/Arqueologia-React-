@@ -49,7 +49,6 @@
   line-height: 1.6;
 }
 
-/* Grid de servicios */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -60,6 +59,22 @@
 .service-card-wrapper {
   height: 100%;
 }
+
+/* ===== INICIO DE LA MODIFICACIÓN ===== */
+/* Añadido un wrapper para la animación de hover */
+.service-card-motion-wrapper {
+  height: 100%;
+  transition: all 0.4s ease; /* Duplica la transición de la tarjeta */
+}
+
+/* Aplicamos el hover al wrapper, no a la tarjeta directamente */
+.service-card-motion-wrapper:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  border-color: rgba(139, 90, 43, 0.2);
+  transform: translateY(-8px);
+}
+/* ===== FIN DE LA MODIFICACIÓN ===== */
+
 
 .service-card {
   display: flex;
@@ -89,17 +104,16 @@
   transition: transform 0.4s ease;
 }
 
-.service-card:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: rgba(139, 90, 43, 0.2);
-  transform: translateY(-8px);
+/* Mover el hover de la tarjeta al wrapper */
+.service-card-motion-wrapper:hover .service-card {
+  box-shadow: none; /* Quitamos la sombra duplicada */
+  transform: none; /* Quitamos la transformación duplicada */
 }
 
-.service-card:hover::before {
+.service-card-motion-wrapper:hover .service-card::before {
   transform: scaleX(1);
 }
 
-/* Icono del servicio */
 .service-icon-container {
   display: flex;
   align-items: center;
@@ -125,7 +139,7 @@
   transition: opacity 0.4s ease;
 }
 
-.service-card:hover .service-icon-container::before {
+.service-card-motion-wrapper:hover .service-icon-container::before {
   opacity: 1;
 }
 
@@ -136,7 +150,6 @@
   position: relative;
 }
 
-/* Contenido del servicio */
 .service-content {
   flex: 1;
   margin-bottom: 1.5rem;
@@ -159,7 +172,6 @@
   margin: 0;
 }
 
-/* Flecha indicadora */
 .service-arrow {
   align-self: flex-end;
   color: var(--color-bronze);
@@ -168,12 +180,11 @@
   transition: all 0.3s ease;
 }
 
-.service-card:hover .service-arrow {
+.service-card-motion-wrapper:hover .service-arrow {
   color: var(--color-gold);
   transform: translateX(5px);
 }
 
-/* Botón ver todos */
 .view-all-container {
   text-align: center;
 }
@@ -219,7 +230,6 @@
   box-shadow: 0 8px 20px rgba(205, 127, 50, 0.3);
 }
 
-/* Estados de carga y error */
 .loading-container {
   display: flex;
   justify-content: center;
@@ -285,13 +295,11 @@
   font-family: var(--font-secondary);
 }
 
-/* Animación de spin */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

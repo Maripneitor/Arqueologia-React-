@@ -1,6 +1,7 @@
-// src/components/BriefServices.jsx - Actualizado y Corregido
+// src/components/BriefServices.jsx - Actualizado con Animación de Icono
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'; // <--- 1. IMPORTAR MOTION
 import { RevealOnScroll } from './RevealOnScroll';
 import { 
   FaTools, 
@@ -77,7 +78,6 @@ export const BriefServices = () => {
   return (
     <section className="brief-services">
       <div className="container">
-        {/* Encabezado con RevealOnScroll */}
         <RevealOnScroll>
           <div className="section-header">
             <h2 className="section-title">Nuestros Servicios</h2>
@@ -101,25 +101,41 @@ export const BriefServices = () => {
             {services.map((service, index) => (
               <RevealOnScroll key={service.id} delay={0.1 * index}>
                 <div className="service-card-wrapper">
-                  <Link 
-                    to={`/servicios${service.slug ? `/${service.slug}` : ''}`} 
-                    className="service-card"
+                  {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
+                  {/* 2. Añadir whileHover al Link (que es la tarjeta) */}
+                  <motion.div
+                    whileHover="hover" // Esto define el estado "hover" para los hijos
+                    className="service-card-motion-wrapper"
                   >
-                    <div className="service-icon-container">
-                      {service.icono ? getIconComponent(service.icono) : <FaTools className="service-icon" />}
-                    </div>
-                    
-                    <div className="service-content">
-                      <h3 className="service-title">{service.nombre}</h3>
-                      <p className="service-description">
-                        {service.descripcion_corta}
-                      </p>
-                    </div>
+                    <Link 
+                      to={`/servicios${service.slug ? `/${service.slug}` : ''}`} 
+                      className="service-card"
+                    >
+                      {/* 3. Envolver el ícono y darle variantes */}
+                      <motion.div
+                        variants={{
+                          hover: { y: -5, scale: 1.1, rotate: 5 }
+                        }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
+                        <div className="service-icon-container">
+                          {service.icono ? getIconComponent(service.icono) : <FaTools className="service-icon" />}
+                        </div>
+                      </motion.div>
+                      
+                      <div className="service-content">
+                        <h3 className="service-title">{service.nombre}</h3>
+                        <p className="service-description">
+                          {service.descripcion_corta}
+                        </p>
+                      </div>
 
-                    <div className="service-arrow">
-                      <span>→</span>
-                    </div>
-                  </Link>
+                      <div className="service-arrow">
+                        <span>→</span>
+                      </div>
+                    </Link>
+                  </motion.div>
+                  {/* ===== FIN DE LA MODIFICACIÓN ===== */}
                 </div>
               </RevealOnScroll>
             ))}
@@ -133,7 +149,6 @@ export const BriefServices = () => {
           </RevealOnScroll>
         )}
 
-        {/* Botón ver todos con RevealOnScroll */}
         <RevealOnScroll delay={0.4}>
           <div className="view-all-container">
             <Link to="/servicios" className="view-all-button">
