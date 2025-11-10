@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ReactCompareSlider } from 'react-compare-slider';
+// MODIFICACIÓN: Eliminado 'ReactCompareSlider'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { 
@@ -12,7 +12,8 @@ import {
   FaBuilding,
   FaTimes,
   FaArrowRight,
-  FaArrowLeft as FaArrowLeftLightbox
+  FaArrowLeft as FaArrowLeftLightbox,
+  FaSyncAlt // Icono para el botón de toggle
 } from 'react-icons/fa';
 import { RevealOnScroll } from '../components/RevealOnScroll';
 import { localAPI } from '../services/localData';
@@ -31,6 +32,9 @@ export const ProjectDetailPage = () => {
 
   // Estado para el lightbox (null = cerrado, 0...N = índice de la imagen)
   const [selectedImage, setSelectedImage] = useState(null);
+  
+  // MODIFICACIÓN: Estado para el nuevo comparador
+  const [showBefore, setShowBefore] = useState(false);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -132,6 +136,12 @@ export const ProjectDetailPage = () => {
     return null;
   }
 
+  // MODIFICACIÓN: Variantes para el nuevo comparador
+  const imageFadeVariants = {
+    hidden: { opacity: 0, scale: 1.05 },
+    visible: { opacity: 1, scale: 1 },
+  };
+
   return (
     <motion.div
       className="project-detail-page"
@@ -156,43 +166,35 @@ export const ProjectDetailPage = () => {
       </motion.div>
 
       <div className="container">
-        {/* Sección del comparador con RevealOnScroll */}
+        {/* MODIFICACIÓN: Sección del comparador reemplazada */}
         <RevealOnScroll>
           <section className="comparator-section">
             <div className="comparator-container">
-              <ReactCompareSlider
-                itemOne={
-                  <div className="compare-image-container">
-                    <img 
-                      src={project.imagen_antes?.url} 
-                      alt={`${project.titulo} - Antes`}
-                      className="compare-image"
-                      loading="eager"
-                      decoding="async"
-                    />
-                    <div className="image-label before">Antes</div>
-                  </div>
-                }
-                itemTwo={
-                  <div className="compare-image-container">
-                    <img 
-                      src={project.imagen_despues?.url} 
-                      alt={`${project.titulo} - Después`}
-                      className="compare-image"
-                      loading="eager"
-                      decoding="async"
-                    />
-                    <div className="image-label after">Después</div>
-                  </div>
-                }
-                position={50}
-                className="react-compare-slider"
-                style={{
-                  borderRadius: '12px',
-                  overflow: 'hidden'
-                }}
-                onlyHandleDraggable={true}
-              />
+              <AnimatePresence initial={false} mode="wait">
+                <motion.img
+                  key={showBefore ? 'before' : 'after'}
+                  src={showBefore ? project.imagen_antes?.url : project.imagen_despues?.url}
+                  alt={showBefore ? `${project.titulo} - Antes` : `${project.titulo} - Después`}
+                  className="compare-image"
+                  variants={imageFadeVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                  loading="eager"
+                  decoding="async"
+                />
+              </AnimatePresence>
+              <div className="image-label before">Antes</div>
+              <div className="image-label after">Después</div>
+              <button 
+                className="compare-toggle" 
+                onClick={() => setShowBefore(!showBefore)}
+                aria-label={showBefore ? "Mostrar imagen después" : "Mostrar imagen antes"}
+              >
+                <FaSyncAlt />
+                <span>{showBefore ? 'Ver Después' : 'Ver Antes'}</span>
+              </button>
             </div>
           </section>
         </RevealOnScroll>

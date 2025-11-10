@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { RevealOnScroll } from './RevealOnScroll';
 import { localAPI } from '../services/localData';
 import { ProjectCard } from './ProjectCard';
+import { ProjectCardSkeleton } from './ProjectCardSkeleton'; // <-- MODIFICACIÓN
 import './FeaturedProjects.css';
 
 export const FeaturedProjects = () => {
@@ -68,13 +69,13 @@ export const FeaturedProjects = () => {
           </div>
         </RevealOnScroll>
 
+        {/* MODIFICACIÓN: Cambiado el spinner por Skeleton Loaders */}
         {isLoading ? (
-          <RevealOnScroll>
-            <div className="loading-container">
-              <div className="loading-spinner large"></div>
-              <p>Cargando proyectos destacados...</p>
-            </div>
-          </RevealOnScroll>
+          <div className="projects-grid">
+            {[1, 2, 3].map((n) => (
+              <ProjectCardSkeleton key={n} />
+            ))}
+          </div>
         ) : projects.length > 0 ? (
           <div className="projects-grid">
             {projects.map((project, index) => (

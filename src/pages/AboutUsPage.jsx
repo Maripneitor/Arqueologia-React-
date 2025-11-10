@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { RevealOnScroll } from '../components/RevealOnScroll';
+// MODIFICACIÓN: Quitamos las importaciones de 'react-vertical-timeline-component'
 import {
   FaRocket, FaTools, FaMicroscope, FaAward,
   FaGlobeAmericas, FaUniversity, FaHandsHelping, FaUser
@@ -147,6 +148,26 @@ export const AboutUsPage = () => {
               </section>
             </RevealOnScroll>
 
+            {/* MODIFICACIÓN: Sección de la línea de tiempo (lista simple) */}
+            <RevealOnScroll delay={0.4}>
+              <section className="timeline-section">
+                <h2 className="section-title">Nuestra Trayectoria</h2>
+                <p className="section-subtitle">
+                  Hitos importantes en nuestro camino de innovación arqueológica
+                </p>
+                
+                {/* De vuelta a la lista simple original */}
+                <div className="simple-timeline-list">
+                  {timeline.map((item) => (
+                    <div key={item.id} className="simple-timeline-item">
+                      <h3 className="simple-timeline-title">{item.año} - {item.titulo}</h3>
+                      <p className="simple-timeline-desc">{item.descripcion}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </RevealOnScroll>
+
             {/* Sección del equipo con RevealOnScroll */}
             <section className="team-section">
               <RevealOnScroll>
@@ -179,25 +200,6 @@ export const AboutUsPage = () => {
                 ))}
               </div>
             </section>
-
-            {/* Sección de la línea de tiempo (lista simple) */}
-            <RevealOnScroll delay={0.4}>
-              <section className="timeline-section">
-                <h2 className="section-title">Nuestra Trayectoria</h2>
-                <p className="section-subtitle">
-                  Hitos importantes en nuestro camino de innovación arqueológica
-                </p>
-                
-                <div className="simple-timeline-list">
-                  {timeline.map((item) => (
-                    <div key={item.id} className="simple-timeline-item">
-                      <h3 className="simple-timeline-title">{item.año} - {item.titulo}</h3>
-                      <p className="simple-timeline-desc">{item.descripcion}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </RevealOnScroll>
           </>
         )}
       </div>

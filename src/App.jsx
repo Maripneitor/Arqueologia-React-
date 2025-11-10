@@ -132,9 +132,10 @@ function App() {
 
   useEffect(() => {
     // Simular tiempo de carga de recursos
+    // MODIFICACIÓN: Reducido de 2500ms a 1000ms
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1000); 
 
     return () => clearTimeout(timer);
   }, []);

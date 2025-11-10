@@ -69,6 +69,9 @@ export const ProjectCard = ({ project }) => {
         className="card-link"
         onMouseEnter={handleReveal}
         onMouseLeave={handleHide}
+        // MODIFICACIÓN: Añadidos onFocus y onBlur para accesibilidad
+        onFocus={handleReveal}
+        onBlur={handleHide}
         onTouchStart={handleReveal}
         onTouchEnd={handleHide}
       >

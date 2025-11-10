@@ -285,6 +285,20 @@
   100% { transform: rotate(360deg); }
 }
 
+/* ===== INICIO DE LA MODIFICACIÓN ===== */
+/* Estilos para la nueva sección de FAQ */
+.faq-section {
+  padding: 4rem 0 0;
+  border-top: 1px solid rgba(139, 90, 43, 0.1);
+  margin-top: 4rem;
+}
+
+.faq-section .section-title {
+  text-align: center;
+}
+/* ===== FIN DE LA MODIFICACIÓN ===== */
+
+
 /* CORRECCIÓN: Responsive mejorado para touch targets */
 @media (max-width: 1024px) {
   .contact-info-section {

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { localAPI } from '../services/localData';
 import { ProjectCard } from '../components/ProjectCard';
+import { ProjectCardSkeleton } from '../components/ProjectCardSkeleton'; // <-- MODIFICACIÓN
 import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
 import './ProjectsPage.css';
 
@@ -115,11 +116,13 @@ export const ProjectsPage = () => {
 
 
         {/* Contenido principal */}
+        {/* MODIFICACIÓN: Cambiado el spinner por Skeleton Loaders */}
         {isLoading ? (
-          <div className="loading-container">
-            <div className="loading-spinner large"></div>
-            <p>Cargando proyectos...</p>
-          </div>
+          <motion.div className="projects-grid" layout>
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <ProjectCardSkeleton key={n} />
+            ))}
+          </motion.div>
         ) : (
           // --- Grid Animado ---
           <motion.div 

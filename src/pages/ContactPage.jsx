@@ -10,7 +10,29 @@ import {
   FaPaperPlane
 } from 'react-icons/fa';
 import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
+import { Accordion } from '../components/Accordion'; // <-- MODIFICACIÓN: Importar Accordion
+import { RevealOnScroll } from '../components/RevealOnScroll'; // <-- MODIFICACIÓN: Importar RevealOnScroll
 import './ContactPage.css';
+
+// MODIFICACIÓN: Añadir datos para el FAQ
+const faqData = [
+  {
+    question: "¿Cuánto cuesta un servicio de excavación?",
+    answer: "El costo varía mucho según el tamaño del proyecto, la ubicación y la profundidad de la excavación. Contáctanos con los detalles de tu proyecto para recibir una cotización personalizada."
+  },
+  {
+    question: "¿Realizan trabajos fuera de Chiapas?",
+    answer: "Sí, aunque nuestra base está en Chiapas, tenemos la capacidad y experiencia para realizar proyectos arqueológicos en toda la República Mexicana y a nivel internacional."
+  },
+  {
+    question: "¿Qué necesito para solicitar una cotización?",
+    answer: "Para darte la mejor cotización, por favor incluye la ubicación del proyecto, el tipo de servicio que requieres (excavación, restauración, análisis, etc.), el tamaño aproximado del área de trabajo y cualquier fecha límite relevante."
+  },
+  {
+    question: "¿Trabajan con clientes privados?",
+    answer: "Absolutamente. Ofrecemos nuestros servicios tanto a instituciones públicas (como el INAH o universidades) como a clientes privados, constructoras y particulares que requieran peritajes o rescates arqueológicos."
+  }
+];
 
 export const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -271,6 +293,14 @@ export const ContactPage = () => {
               </motion.button>
             </form>
           </motion.div>
+
+          {/* MODIFICACIÓN: Nueva sección de FAQ */}
+          <RevealOnScroll delay={0.5}>
+            <section className="faq-section">
+              <h2 className="section-title">Preguntas Frecuentes</h2>
+              <Accordion items={faqData} />
+            </section>
+          </RevealOnScroll>
         </div>
       </div>
     </motion.div>
