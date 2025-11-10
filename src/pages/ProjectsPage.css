@@ -48,6 +48,60 @@
   display: inline-block;
 }
 
+/* --- INICIO: Estilos de Filtros --- */
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 0.75rem;
+  background: var(--color-papyrus);
+  border-radius: 50px;
+  max-width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(139, 90, 43, 0.05);
+}
+
+.filter-button {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-clay);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.filter-button:hover:not(.active) {
+  background: rgba(139, 90, 43, 0.05);
+  color: var(--color-earth);
+}
+
+.filter-button.active {
+  color: var(--color-sand);
+}
+
+.active-filter-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: var(--color-bronze);
+  border-radius: 30px;
+  z-index: -1;
+  box-shadow: 0 5px 15px rgba(205, 127, 50, 0.3);
+}
+/* --- FIN: Estilos de Filtros --- */
+
+
 /* Grid de proyectos */
 .projects-grid-container {
   width: 100%;
@@ -91,6 +145,11 @@
   text-align: center;
   padding: 6rem 0;
   color: var(--color-clay);
+}
+/* Estilo específico para "sin filtros" */
+.no-projects-filter {
+  padding: 3rem 0;
+  grid-column: 1 / -1; /* Asegura que ocupe todo el grid */
 }
 
 .no-projects h2 {
@@ -203,6 +262,15 @@
   
   .page-subtitle {
     font-size: 1.1rem;
+  }
+
+  .filter-buttons {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+  .filter-button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
   }
   
   .projects-grid {

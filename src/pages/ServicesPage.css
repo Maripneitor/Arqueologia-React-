@@ -127,6 +127,19 @@
   margin-bottom: 2rem;
 }
 
+/* --- INICIO: Animación Flotante --- */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .service-icon-container {
   display: flex;
   align-items: center;
@@ -138,7 +151,19 @@
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
+  
+  /* Aplicar la animación */
+  animation: float 4s ease-in-out infinite;
+  /* Aplicar un delay aleatorio para que no floten todos a la vez */
+  /* Esto requeriría JS, así que por ahora lo dejamos sincrónico */
 }
+
+/* Pausar animación en hover */
+.service-detail-card:hover .service-icon-container {
+  animation-play-state: paused;
+}
+/* --- FIN: Animación Flotante --- */
+
 
 .service-icon-container::before {
   content: '';
@@ -517,5 +542,12 @@
   
   .cta-content h2 {
     font-size: 1.75rem;
+  }
+}
+
+/* Modo de movimiento reducido: desactiva la animación flotante */
+@media (prefers-reduced-motion: reduce) {
+  .service-icon-container {
+    animation: none;
   }
 }

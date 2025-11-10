@@ -1,4 +1,4 @@
-// src/pages/AboutUsPage.jsx - REVERTIDO PARA QUITAR EL ERROR
+// src/pages/AboutUsPage.jsx
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { RevealOnScroll } from '../components/RevealOnScroll';
@@ -6,8 +6,8 @@ import {
   FaRocket, FaTools, FaMicroscope, FaAward,
   FaGlobeAmericas, FaUniversity, FaHandsHelping, FaUser
 } from 'react-icons/fa';
-// Quitamos la importación de 'react-vertical-timeline-component'
 import { localAPI } from '../services/localData';
+import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
 import './AboutUsPage.css';
 
 export const AboutUsPage = () => {
@@ -70,10 +70,11 @@ export const AboutUsPage = () => {
     return (
       <motion.div
         className="about-us-page error-page"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageSlideVariants}
+        transition={pageTransition}
       >
         <div className="container">
           <div className="error-message">
@@ -100,10 +101,11 @@ export const AboutUsPage = () => {
   return (
     <motion.div
       className="about-us-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageSlideVariants}
+      transition={pageTransition}
     >
       <div className="container">
         {/* Header con RevealOnScroll */}
@@ -178,8 +180,7 @@ export const AboutUsPage = () => {
               </div>
             </section>
 
-            {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
-            {/* Sección de la línea de tiempo (revertida a una lista simple) */}
+            {/* Sección de la línea de tiempo (lista simple) */}
             <RevealOnScroll delay={0.4}>
               <section className="timeline-section">
                 <h2 className="section-title">Nuestra Trayectoria</h2>
@@ -197,7 +198,6 @@ export const AboutUsPage = () => {
                 </div>
               </section>
             </RevealOnScroll>
-            {/* ===== FIN DE LA MODIFICACIÓN ===== */}
           </>
         )}
       </div>

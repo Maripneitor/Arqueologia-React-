@@ -1,0 +1,62 @@
+/* src/components/StatsCounter.css */
+
+.stats-counter-section {
+  padding: 4rem 0;
+  background: var(--color-papyrus);
+  border-top: 1px solid rgba(139, 90, 43, 0.1);
+  border-bottom: 1px solid rgba(139, 90, 43, 0.1);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 16px;
+  background: var(--color-sand);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: var(--color-bronze);
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-earth);
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  color: var(--color-clay);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .stats-counter-section {
+    padding: 3rem 0;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .stat-number {
+    font-size: 3rem;
+  }
+}

@@ -1,4 +1,4 @@
-// src/App.jsx - ACTUALIZADO CON SCROLL TO TOP
+// src/App.jsx - ACTUALIZADO CON NUEVOS COMPONENTES Y TRANSICIONES
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
@@ -11,7 +11,14 @@ import { BriefServices } from './components/BriefServices';
 import { Loader } from './components/Loader';
 import { RevealOnScroll } from './components/RevealOnScroll';
 import { Link } from 'react-router-dom';
-import { ScrollToTopButton } from './components/ScrollToTopButton'; // <--- 1. IMPORTAR
+import { ScrollToTopButton } from './components/ScrollToTopButton';
+
+// --- NUEVAS IMPORTACIONES ---
+import { StatsCounter } from './components/StatsCounter';
+import { Testimonials } from './components/Testimonials';
+import { ClientLogos } from './components/ClientLogos';
+import { pageSlideVariants, pageTransition } from './utils/pageTransitions';
+// ----------------------------
 
 // Carga diferida de páginas
 const AboutUsPage = lazy(() => 
@@ -29,7 +36,6 @@ const ProjectDetailPage = lazy(() =>
 const ContactPage = lazy(() => 
   import('./pages/ContactPage').then(module => ({ default: module.ContactPage }))
 );
-// Importamos la página de detalle de servicio que ya creamos
 const ServiceDetailPage = lazy(() => 
   import('./pages/ServiceDetailPage').then(module => ({ default: module.ServiceDetailPage }))
 );
@@ -69,6 +75,7 @@ const Layout = () => {
     <div className="app-layout">
       <Header />
       <main className="main-content">
+        {/* Usamos 'wait' para que la página saliente termine su animación antes de que entre la nueva */}
         <AnimatePresence mode="wait" initial={false}>
           <Suspense fallback={<PageLoader />}>
             <Outlet key={location.pathname} />
@@ -80,18 +87,26 @@ const Layout = () => {
   );
 };
 
-// HomePage Component con animaciones
+// HomePage Component con animaciones y nuevos componentes
 const HomePage = () => (
   <motion.div
     className="home-page"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.3 }}
+    // --- APLICAR TRANSICIÓN DE PÁGINA ---
+    initial="initial"
+    animate="in"
+    exit="out"
+    variants={pageSlideVariants}
+    transition={pageTransition}
   >
     <Hero />
     <FeaturedProjects />
     <BriefServices />
+    
+    {/* --- NUEVOS COMPONENTES AÑADIDOS --- */}
+    <StatsCounter />
+    <ClientLogos />
+    <Testimonials />
+    {/* ---------------------------------- */}
 
     <RevealOnScroll>
       <section className="cta-section home-cta">
@@ -131,9 +146,8 @@ function App() {
       </AnimatePresence>
       
       <Router>
-        {/* ===== 2. AÑADIR EL BOTÓN AQUÍ ===== */}
+        {/* Botón de Volver Arriba que ya tenías */}
         <ScrollToTopButton />
-        {/* ================================== */}
 
         <Routes>
           <Route path="/" element={<Layout />}>

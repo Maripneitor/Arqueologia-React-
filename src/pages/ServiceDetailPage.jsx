@@ -8,7 +8,8 @@ import {
   FaTools, FaSearch, FaBook, FaMonument, FaMapMarkedAlt,
   FaHistory, FaMicroscope, FaArrowLeft
 } from 'react-icons/fa';
-import './ServiceDetailPage.css'; // Crearemos este archivo a continuación
+import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
+import './ServiceDetailPage.css';
 
 // Mapeo de iconos
 const getIconComponent = (iconName) => {
@@ -55,32 +56,40 @@ export const ServiceDetailPage = () => {
 
   const handleBack = () => navigate(-1);
 
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
-  };
-
   if (error) {
     return (
-      <div className="service-detail-page error-page">
+      <motion.div 
+        className="service-detail-page error-page"
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageSlideVariants}
+        transition={pageTransition}
+      >
         <div className="container">
           <h1>Servicio No Encontrado</h1>
           <p>{error}</p>
           <Link to="/servicios" className="cta-button primary">Ver todos los servicios</Link>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   if (isLoading) {
     return (
-      <div className="service-detail-page loading-page">
+      <motion.div 
+        className="service-detail-page loading-page"
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageSlideVariants}
+        transition={pageTransition}
+      >
         <div className="container">
           <div className="loading-spinner large"></div>
           <p>Cargando servicio...</p>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -92,8 +101,8 @@ export const ServiceDetailPage = () => {
       initial="initial"
       animate="in"
       exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      variants={pageSlideVariants}
+      transition={pageTransition}
     >
       <div className="container">
         <RevealOnScroll>

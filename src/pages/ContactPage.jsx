@@ -9,6 +9,7 @@ import {
   FaClock,
   FaPaperPlane
 } from 'react-icons/fa';
+import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
 import './ContactPage.css';
 
 export const ContactPage = () => {
@@ -35,8 +36,11 @@ export const ContactPage = () => {
     setIsSubmitting(true);
     
     // Simular envío del formulario
+    console.log("Formulario enviado:", formData);
     setTimeout(() => {
-      alert('¡Mensaje enviado! Te contactaremos pronto.');
+      // Usar un modal personalizado en un proyecto real
+      // alert('¡Mensaje enviado! Te contactaremos pronto.'); 
+      console.log('¡Mensaje enviado! Te contactaremos pronto.');
       setFormData({
         nombre: '',
         email: '',
@@ -51,10 +55,11 @@ export const ContactPage = () => {
   return (
     <motion.div
       className="contact-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageSlideVariants}
+      transition={pageTransition}
     >
       <div className="container">
         {/* Header de la página */}
@@ -84,14 +89,14 @@ export const ContactPage = () => {
               <h2 className="section-title">Nuestra Ubicación</h2>
               <div className="map-wrapper">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.454276299855!2d-3.688345024048059!3d40.41999605537628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228996f1d5a3b%3A0x1d7a2571e565a9e1!2sMuseo%20Arqueol%C3%B3gico%20Nacional!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.9775664214567!2d-93.01058826074785!3d16.71738903473528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ed25e5c8fe81e9%3A0xd130c8978e0310f1!2sBlvrd%20Montebello%2C%2029160%20Chiapa%20de%20Corzo%2C%20Chis.!5e1!3m2!1ses-419!2smx!4v1762740637576!5m2!1ses-419!2smx"
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Ubicación de Arqueología Moderna"
+                  title="Ubicación de la Empresa"
                   className="contact-map"
                 ></iframe>
               </div>
@@ -108,7 +113,7 @@ export const ContactPage = () => {
                   </div>
                   <div className="contact-text">
                     <h3>Dirección</h3>
-                    <p>Calle Serrano, 13<br />28001 Madrid, España</p>
+                    <p>Chiapa de Corzo, Chiapas<br />México</p>
                   </div>
                 </div>
 
@@ -150,7 +155,7 @@ export const ContactPage = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <a
-                  href="https://wa.me/34123456789"
+                  href="https://wa.me/529611290622" // Número de México
                   target="_blank"
                   rel="noopener noreferrer"
                   className="whatsapp-button"
@@ -210,7 +215,7 @@ export const ContactPage = () => {
                     name="telefono"
                     value={formData.telefono}
                     onChange={handleInputChange}
-                    placeholder="+34 123 456 789"
+                    placeholder="+52 961 123 4567"
                   />
                 </div>
                 <div className="form-group">

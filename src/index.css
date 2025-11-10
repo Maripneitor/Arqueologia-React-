@@ -51,10 +51,15 @@ img, picture, video, canvas, svg {
   flex-direction: column;
 }
 
+/* ===== INICIO DE LA MODIFICACIÓN (Transiciones de Página) ===== */
 .main-content {
   flex: 1;
   width: 100%;
+  position: relative; /* Necesario para AnimatePresence */
+  overflow: hidden; /* Oculta las páginas mientras entran/salen */
 }
+/* ===== FIN DE LA MODIFICACIÓN ===== */
+
 
 /* Mejora de rendimiento para animaciones */
 * {
@@ -107,14 +112,7 @@ html, body {
   overflow-x: hidden;
 }
 
-.main-content {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-/* ===== INICIO DE LA MODIFICACIÓN ===== */
 /* Estilos para el CTA del Home (traídos de ServicesPage.css) */
-
 .cta-section {
   background: linear-gradient(135deg, var(--color-papyrus), var(--color-sand));
   border-radius: 20px;
@@ -217,5 +215,3 @@ html, body {
     font-size: 1.75rem;
   }
 }
-
-/* ===== FIN DE LA MODIFICACIÓN ===== */

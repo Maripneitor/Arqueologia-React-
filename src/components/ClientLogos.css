@@ -1,0 +1,66 @@
+/* src/components/ClientLogos.css */
+
+.client-logos-section {
+  padding: 3rem 0;
+  background: var(--color-sand);
+}
+
+.client-logos-title {
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+  color: var(--color-clay);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.client-logos-ticker {
+  overflow: hidden;
+  position: relative;
+  /* Difuminado en los bordes para el efecto infinito */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.logos-swiper {
+  width: 100%;
+  overflow: visible; /* Importante para que no se corte */
+}
+
+/* --- ESTA ES LA CORRECCIÓN CLAVE --- */
+/* Asegura que la animación de autoplay sea lineal y continua */
+.logos-swiper .swiper-wrapper {
+  transition-timing-function: linear !important; 
+  -webkit-transition-timing-function: linear !important;
+}
+/* --------------------------------- */
+
+.logo-slide {
+  width: auto; /* Ancho automático para cada logo */
+  flex-shrink: 0; /* Evita que los logos se encojan */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-logo {
+  max-height: 60px; /* Altura máxima para los logos */
+  width: auto;
+  max-width: 150px; /* Ancho máximo por logo */
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.logo-slide:hover .client-logo {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .client-logo {
+    max-height: 50px;
+  }
+}

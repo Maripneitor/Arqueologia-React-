@@ -1,13 +1,22 @@
-// src/pages/ProjectDetailPage.jsx - Actualizado con Mapa y RevealOnScroll
+// src/pages/ProjectDetailPage.jsx - Actualizado con Lightbox y Transición
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ReactCompareSlider } from 'react-compare-slider';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { FaArrowLeft, FaCalendar, FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
+import { 
+  FaArrowLeft, 
+  FaCalendar, 
+  FaMapMarkerAlt, 
+  FaBuilding,
+  FaTimes,
+  FaArrowRight,
+  FaArrowLeft as FaArrowLeftLightbox
+} from 'react-icons/fa';
 import { RevealOnScroll } from '../components/RevealOnScroll';
 import { localAPI } from '../services/localData';
+import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -19,6 +28,9 @@ export const ProjectDetailPage = () => {
   const [project, setProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Estado para el lightbox (null = cerrado, 0...N = índice de la imagen)
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -47,17 +59,35 @@ export const ProjectDetailPage = () => {
       fetchProject();
     }
   }, [slug]);
+  
+  // --- Manejadores del Lightbox ---
+  const handleOpenLightbox = (index) => {
+    setSelectedImage(index);
+  };
+
+  const handleCloseLightbox = () => {
+    setSelectedImage(null);
+  };
+
+  const handleLightboxNav = (direction) => {
+    if (selectedImage === null) return;
+    
+    let newIndex = selectedImage + direction;
+    const totalImages = project.galeria.length;
+
+    if (newIndex < 0) {
+      newIndex = totalImages - 1; // Loop al final
+    } else if (newIndex >= totalImages) {
+      newIndex = 0; // Loop al inicio
+    }
+    
+    setSelectedImage(newIndex);
+  };
+  // ---------------------------------
 
   // Función para navegar de regreso
   const handleBack = () => {
     navigate(-1);
-  };
-
-  // Variantes para animaciones
-  const pageVariants = {
-    initial: { opacity: 0, y: 20 },
-    in: { opacity: 1, y: 0 },
-    out: { opacity: 0, y: -20 }
   };
 
   if (error) {
@@ -108,8 +138,8 @@ export const ProjectDetailPage = () => {
       initial="initial"
       animate="in"
       exit="out"
-      variants={pageVariants}
-      transition={{ duration: 0.5 }}
+      variants={pageSlideVariants}
+      transition={pageTransition}
     >
       {/* Header con navegación */}
       <motion.div
@@ -243,7 +273,11 @@ export const ProjectDetailPage = () => {
                 className="gallery-swiper"
               >
                 {project.galeria.map((image, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide 
+                    key={index}
+                    onClick={() => handleOpenLightbox(index)} // <-- Añadir onClick
+                    className="gallery-slide-clickable" // <-- Añadir clase para cursor
+                  >
                     <div className="gallery-slide">
                       <img 
                         src={image.url} 
@@ -252,6 +286,9 @@ export const ProjectDetailPage = () => {
                         loading="lazy"
                         decoding="async"
                       />
+                      <div className="gallery-slide-overlay">
+                        <span>Ver</span>
+                      </div>
                     </div>
                   </SwiperSlide>
                 ))}
@@ -260,7 +297,7 @@ export const ProjectDetailPage = () => {
           </RevealOnScroll>
         )}
 
-        {/* ===== INICIO DE SECCIÓN DE MAPA ===== */}
+        {/* Sección de Mapa */}
         {project.mapa_url && (
           <RevealOnScroll delay={0.5}>
             <section className="map-section">
@@ -281,8 +318,6 @@ export const ProjectDetailPage = () => {
             </section>
           </RevealOnScroll>
         )}
-        {/* ===== FIN DE SECCIÓN DE MAPA ===== */}
-
 
         {/* Navegación entre proyectos con RevealOnScroll */}
         <RevealOnScroll delay={0.6}>
@@ -298,6 +333,60 @@ export const ProjectDetailPage = () => {
           </section>
         </RevealOnScroll>
       </div>
+
+      {/* --- INICIO: JSX DEL LIGHTBOX --- */}
+      <AnimatePresence>
+        {selectedImage !== null && project.galeria[selectedImage] && (
+          <motion.div
+            className="lightbox-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleCloseLightbox} // Cierra al hacer clic en el fondo
+          >
+            <motion.div 
+              className="lightbox-content"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()} // Evita que se cierre al hacer clic en la imagen
+            >
+              <img 
+                src={project.galeria[selectedImage].url} 
+                alt={project.galeria[selectedImage].alternativeText || `Galería ${selectedImage + 1}`} 
+              />
+            </motion.div>
+
+            {/* Botón de Cierre */}
+            <button 
+              className="lightbox-close" 
+              onClick={handleCloseLightbox} 
+              aria-label="Cerrar"
+            >
+              <FaTimes />
+            </button>
+            
+            {/* Navegación */}
+            <button 
+              className="lightbox-nav prev" 
+              onClick={(e) => { e.stopPropagation(); handleLightboxNav(-1); }} 
+              aria-label="Anterior"
+            >
+              <FaArrowLeftLightbox />
+            </button>
+            <button 
+              className="lightbox-nav next" 
+              onClick={(e) => { e.stopPropagation(); handleLightboxNav(1); }} 
+              aria-label="Siguiente"
+            >
+              <FaArrowRight />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* --- FIN: JSX DEL LIGHTBOX --- */}
+
     </motion.div>
   );
 };

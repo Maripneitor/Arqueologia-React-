@@ -13,6 +13,7 @@ import {
   FaArrowLeft
 } from 'react-icons/fa';
 import { localAPI } from '../services/localData';
+import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
 import './ServicesPage.css';
 
 export const ServicesPage = () => {
@@ -67,10 +68,11 @@ export const ServicesPage = () => {
     return (
       <motion.div
         className="services-page error-page"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageSlideVariants}
+        transition={pageTransition}
       >
         <div className="container">
           <div className="error-message">
@@ -97,10 +99,11 @@ export const ServicesPage = () => {
   return (
     <motion.div
       className="services-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageSlideVariants}
+      transition={pageTransition}
     >
       <div className="container">
         {/* Header de la página */}
@@ -136,13 +139,14 @@ export const ServicesPage = () => {
         ) : services.length > 0 ? (
           <div className="services-container">
             <div className="services-grid">
-              {services.map((service) => (
+              {services.map((service, index) => (
                 <motion.div
                   key={service.id}
                   className="service-detail-card"
                   initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <div className="service-header">
                     <div className="service-icon-container">
@@ -212,8 +216,9 @@ export const ServicesPage = () => {
         <motion.section
           className="cta-section"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="cta-content">
             <h2>¿Necesitas un servicio personalizado?</h2>

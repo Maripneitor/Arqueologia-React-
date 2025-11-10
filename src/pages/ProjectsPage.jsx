@@ -1,14 +1,23 @@
 // src/pages/ProjectsPage.jsx
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { localAPI } from '../services/localData';
 import { ProjectCard } from '../components/ProjectCard';
+import { pageSlideVariants, pageTransition } from '../utils/pageTransitions';
 import './ProjectsPage.css';
 
+// Simulamos algunas categorías. En un proyecto real, esto vendría de la API
+// o se generaría desde los datos de 'projects'.
+const categories = ['Todos', 'Restauración', 'Intervención', 'Documentación'];
+
 export const ProjectsPage = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([]); // Guarda *todos* los proyectos
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Estados para los filtros
+  const [activeFilter, setActiveFilter] = useState('Todos');
+  const [filteredProjects, setFilteredProjects] = useState([]); // Proyectos a mostrar
 
   useEffect(() => {
     const fetchAllProjects = async () => {
@@ -18,13 +27,17 @@ export const ProjectsPage = () => {
         
         const response = await localAPI.getProjects();
         
-        // Transformar datos al formato esperado
         const projectsData = response.data.map(item => ({
           id: item.id,
-          ...item.attributes
+          ...item.attributes,
+          // Simulamos una categoría basada en el título para el filtro
+          // En un proyecto real, usarías un campo 'tipo' o 'categoria'
+          category: item.attributes.titulo.includes('Catedral') || item.attributes.titulo.includes('Hacienda') ? 'Restauración' : 
+                    item.attributes.titulo.includes('UNICACH') ? 'Intervención' : 'Documentación'
         }));
 
         setProjects(projectsData);
+        setFilteredProjects(projectsData); // Al inicio, mostrar todos
       } catch (err) {
         console.error('Error fetching projects:', err);
         setError('Error al cargar los proyectos. Por favor, intenta nuevamente.');
@@ -36,13 +49,26 @@ export const ProjectsPage = () => {
     fetchAllProjects();
   }, []);
 
+  // Manejador para cambiar el filtro
+  const handleFilter = (category) => {
+    setActiveFilter(category);
+
+    if (category === 'Todos') {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter(project => project.category === category);
+      setFilteredProjects(filtered);
+    }
+  };
+
   return (
     <motion.div
       className="projects-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageSlideVariants}
+      transition={pageTransition}
     >
       <div className="container">
         {/* Header de la página */}
@@ -56,12 +82,37 @@ export const ProjectsPage = () => {
           <p className="page-subtitle">
             Descubre todos nuestros proyectos arqueológicos y las transformaciones que hemos logrado
           </p>
-          <div className="projects-count">
-            {!isLoading && (
-              <span>{projects.length} proyecto{projects.length !== 1 ? 's' : ''} encontrado{projects.length !== 1 ? 's' : ''}</span>
-            )}
-          </div>
         </motion.div>
+
+        {/* --- Botones de Filtro --- */}
+        {!isLoading && !error && (
+          <motion.div 
+            className="filter-buttons"
+            layout // Anima el contenedor si cambia de tamaño (ej. en móvil)
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`filter-button ${activeFilter === category ? 'active' : ''}`}
+                onClick={() => handleFilter(category)}
+              >
+                {category}
+                {/* Animación de la línea de "activo" */}
+                {activeFilter === category && (
+                  <motion.div 
+                    className="active-filter-underline" 
+                    layoutId="activeFilterUnderline"
+                  />
+                )}
+              </button>
+            ))}
+          </motion.div>
+        )}
+        {/* --------------------------- */}
+
 
         {/* Contenido principal */}
         {isLoading ? (
@@ -69,25 +120,42 @@ export const ProjectsPage = () => {
             <div className="loading-spinner large"></div>
             <p>Cargando proyectos...</p>
           </div>
-        ) : projects.length > 0 ? (
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <ProjectCard 
-                key={project.id} 
-                project={project}
-              />
-            ))}
-          </div>
         ) : (
-          <motion.div
-            className="no-projects"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          // --- Grid Animado ---
+          <motion.div 
+            className="projects-grid"
+            layout // Anima el grid cuando los hijos cambian
           >
-            <h2>No hay proyectos disponibles</h2>
-            <p>No se encontraron proyectos en nuestro portafolio.</p>
+            <AnimatePresence>
+              {filteredProjects.length > 0 ? (
+                filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    layout // Anima la posición del item
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                  >
+                    <ProjectCard 
+                      project={project}
+                    />
+                  </motion.div>
+                ))
+              ) : (
+                <motion.div
+                  className="no-projects no-projects-filter"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <h2>No se encontraron proyectos</h2>
+                  <p>No hay proyectos que coincidan con el filtro "{activeFilter}".</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
+          // --------------------
         )}
       </div>
     </motion.div>
