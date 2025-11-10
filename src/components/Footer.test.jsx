@@ -42,7 +42,7 @@ describe('Footer Component', () => {
     
     // Usar texto parcial para encontrar el email
     expect(screen.getByText(/info@empresa-arqueologia.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/\+34 912 345 678/i)).toBeInTheDocument();
+    expect(screen.getByText(/\+52 961-129-0622/i)).toBeInTheDocument();
     expect(screen.getByText(/Madrid, España/i)).toBeInTheDocument();
   });
 });

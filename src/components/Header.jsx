@@ -207,7 +207,7 @@ export const Header = () => {
                   transition={{ delay: 0.5 }}
                 >
                   <p>📧 info@empresa-arqueologia.com</p>
-                  <p>📞 +34 912 345 678</p>
+                  <p>📞 +52 961-129-0622</p>
                 </motion.div>
               </motion.nav>
             </motion.div>

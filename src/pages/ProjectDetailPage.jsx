@@ -1,5 +1,5 @@
-// src/pages/ProjectDetailPage.jsx - Actualizado con RevealOnScroll y Optimizaciones
-import React, { useState, useEffect, lazy } from 'react';
+// src/pages/ProjectDetailPage.jsx - Actualizado con Mapa y RevealOnScroll
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ReactCompareSlider } from 'react-compare-slider';
@@ -19,7 +19,6 @@ export const ProjectDetailPage = () => {
   const [project, setProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -103,12 +102,6 @@ export const ProjectDetailPage = () => {
     return null;
   }
 
-  const allImages = [
-    project.imagen_antes,
-    project.imagen_despues,
-    ...(project.galeria || [])
-  ].filter(img => img && img.url);
-
   return (
     <motion.div
       className="project-detail-page"
@@ -144,7 +137,7 @@ export const ProjectDetailPage = () => {
                       src={project.imagen_antes?.url} 
                       alt={`${project.titulo} - Antes`}
                       className="compare-image"
-                      loading="eager" // ✅ Carga prioritaria para imagen above the fold
+                      loading="eager"
                       decoding="async"
                     />
                     <div className="image-label before">Antes</div>
@@ -156,7 +149,7 @@ export const ProjectDetailPage = () => {
                       src={project.imagen_despues?.url} 
                       alt={`${project.titulo} - Después`}
                       className="compare-image"
-                      loading="eager" // ✅ Carga prioritaria para imagen above the fold
+                      loading="eager"
                       decoding="async"
                     />
                     <div className="image-label after">Después</div>
@@ -236,7 +229,7 @@ export const ProjectDetailPage = () => {
                 navigation={true}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 5000, disableOnInteraction: false }}
-                loop={true}
+                loop={project.galeria.length > 2} // Loop solo si hay suficientes imágenes
                 spaceBetween={20}
                 slidesPerView={1}
                 breakpoints={{
@@ -248,7 +241,6 @@ export const ProjectDetailPage = () => {
                   },
                 }}
                 className="gallery-swiper"
-                lazy={true} // ✅ Lazy loading nativo de Swiper
               >
                 {project.galeria.map((image, index) => (
                   <SwiperSlide key={index}>
@@ -257,7 +249,7 @@ export const ProjectDetailPage = () => {
                         src={image.url} 
                         alt={image.alternativeText || `Galería ${index + 1} - ${project.titulo}`}
                         className="gallery-image"
-                        loading="lazy" // ✅ Lazy loading para imágenes de galería
+                        loading="lazy"
                         decoding="async"
                       />
                     </div>
@@ -267,6 +259,30 @@ export const ProjectDetailPage = () => {
             </section>
           </RevealOnScroll>
         )}
+
+        {/* ===== INICIO DE SECCIÓN DE MAPA ===== */}
+        {project.mapa_url && (
+          <RevealOnScroll delay={0.5}>
+            <section className="map-section">
+              <h2 className="map-title">Ubicación del Proyecto</h2>
+              <div className="map-wrapper">
+                <iframe
+                  src={project.mapa_url}
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`Ubicación de ${project.titulo}`}
+                  className="project-map"
+                ></iframe>
+              </div>
+            </section>
+          </RevealOnScroll>
+        )}
+        {/* ===== FIN DE SECCIÓN DE MAPA ===== */}
+
 
         {/* Navegación entre proyectos con RevealOnScroll */}
         <RevealOnScroll delay={0.6}>

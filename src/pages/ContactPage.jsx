@@ -118,7 +118,7 @@ export const ContactPage = () => {
                   </div>
                   <div className="contact-text">
                     <h3>Teléfono</h3>
-                    <p>+34 912 345 678</p>
+                    <p>+52 961-129-0622</p>
                   </div>
                 </div>
 

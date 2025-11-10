@@ -1,4 +1,4 @@
-// src/App.jsx - OPTIMIZADO CON LAZY LOADING
+// src/App.jsx - CORREGIDO CON NUEVA RUTA DE SERVICIOS
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
@@ -9,15 +9,35 @@ import { motion } from 'framer-motion';
 import { FeaturedProjects } from './components/FeaturedProjects';
 import { BriefServices } from './components/BriefServices';
 import { Loader } from './components/Loader';
+import { RevealOnScroll } from './components/RevealOnScroll'; // Importar RevealOnScroll
+import { Link } from 'react-router-dom'; // Importar Link
 
-// ✅ Carga diferida de páginas con React.lazy
-const AboutUsPage = lazy(() => import('./pages/AboutUsPage'));
-const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
-const ProjectDetailPage = lazy(() => import('./pages/ProjectDetailPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
+// Carga diferida de páginas
+const AboutUsPage = lazy(() => 
+  import('./pages/AboutUsPage').then(module => ({ default: module.AboutUsPage }))
+);
+const ServicesPage = lazy(() => 
+  import('./pages/ServicesPage').then(module => ({ default: module.ServicesPage }))
+);
+const ProjectsPage = lazy(() => 
+  import('./pages/ProjectsPage').then(module => ({ default: module.ProjectsPage }))
+);
+const ProjectDetailPage = lazy(() => 
+  import('./pages/ProjectDetailPage').then(module => ({ default: module.ProjectDetailPage }))
+);
+const ContactPage = lazy(() => 
+  import('./pages/ContactPage').then(module => ({ default: module.ContactPage }))
+);
 
-// ✅ Componente de carga para Suspense
+// ===== INICIO DE LA MODIFICACIÓN =====
+// 1. AÑADIR NUEVA PÁGINA DE DETALLE DE SERVICIO
+const ServiceDetailPage = lazy(() => 
+  import('./pages/ServiceDetailPage').then(module => ({ default: module.ServiceDetailPage }))
+);
+// ===== FIN DE LA MODIFICACIÓN =====
+
+
+// Componente de carga para Suspense
 const PageLoader = () => (
   <div style={{ 
     display: 'flex', 
@@ -52,7 +72,6 @@ const Layout = () => {
       <Header />
       <main className="main-content">
         <AnimatePresence mode="wait" initial={false}>
-          {/* ✅ Suspense para carga diferida de páginas */}
           <Suspense fallback={<PageLoader />}>
             <Outlet key={location.pathname} />
           </Suspense>
@@ -75,12 +94,26 @@ const HomePage = () => (
     <Hero />
     <FeaturedProjects />
     <BriefServices />
-    <section style={{ padding: '4rem 0', background: 'var(--color-sand)' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
-        <h2>¿Listo para comenzar tu proyecto?</h2>
-        <p>Contáctanos para más información sobre nuestros servicios arqueológicos</p>
-      </div>
-    </section>
+
+    {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
+    {/* 2. MEJORAR EL CTA DEL HOME */}
+    <RevealOnScroll>
+      <section className="cta-section home-cta">
+        <div className="cta-content">
+          <h2>¿Listo para comenzar tu proyecto?</h2>
+          <p>Contáctanos para más información sobre nuestros servicios arqueológicos</p>
+          <div className="cta-buttons">
+            <Link to="/contacto" className="cta-button large primary">
+              Solicitar Cotización
+            </Link>
+            <Link to="/proyectos" className="cta-button large secondary">
+              Ver Nuestros Proyectos
+            </Link>
+          </div>
+        </div>
+      </section>
+    </RevealOnScroll>
+    {/* ===== FIN DE LA MODIFICACIÓN ===== */}
   </motion.div>
 );
 
@@ -106,11 +139,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
-            {/* ✅ Rutas con componentes cargados de forma diferida */}
             <Route path="proyectos" element={<ProjectsPage />} />
             <Route path="proyectos/:slug" element={<ProjectDetailPage />} />
             <Route path="nosotros" element={<AboutUsPage />} />
             <Route path="servicios" element={<ServicesPage />} />
+            
+            {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
+            {/* 3. AÑADIR NUEVA RUTA */}
+            <Route path="servicios/:slug" element={<ServiceDetailPage />} />
+            {/* ===== FIN DE LA MODIFICACIÓN ===== */}
+            
             <Route path="contacto" element={<ContactPage />} />
           </Route>
         </Routes>

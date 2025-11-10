@@ -3,8 +3,9 @@ import React, { useRef, useState, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom'; // <--- 1. IMPORTAR LINK
 
-// Importaciones CSS de Swiper - CORREGIDO
+// Importaciones CSS de Swiper
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
@@ -16,7 +17,6 @@ export const Hero = () => {
   const heroRef = useRef(null);
   const [loadedImages, setLoadedImages] = useState({});
   
-  // Configuración mejorada del parallax - CORREGIDO
   const { scrollY } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
@@ -24,19 +24,15 @@ export const Hero = () => {
 
   const y = useTransform(scrollY, [0, 1], ['0%', '20%']);
 
-  // Manejo de carga de imágenes - MEJORA
   const handleImageLoad = useCallback((imageId) => {
     setLoadedImages(prev => ({ ...prev, [imageId]: true }));
   }, []);
 
-  // ===== INICIO DE LA MODIFICACIÓN =====
-  // Reemplazamos los datos de Unsplash con los de tus proyectos.
   const slides = [
     {
       id: 1,
       title: "Restauración Catedral de San Cristóbal",
       subtitle: "Preservando nuestro patrimonio cultural",
-      // Esta es la nueva ruta a tu imagen en la carpeta 'public'
       image: "/images/Catedral/Sancris08.webp",
       description: "Intervención de elementos arquitectónicos y restauración pictórica de retablos."
     },
@@ -44,7 +40,6 @@ export const Hero = () => {
       id: 2,
       title: "Hacienda Bajucú",
       subtitle: "Consolidación y restauración histórica",
-      // Esta es la nueva ruta a tu imagen en la carpeta 'public'
       image: "/images/hacienda-bajucu/hacienda-bajucu-galeria-02.webp",
       description: "Estabilización de muros, techumbres y recuperación de acabados originales."
     },
@@ -52,49 +47,24 @@ export const Hero = () => {
       id: 3,
       title: "UNICACH Escuela de Artes",
       subtitle: "Adaptación de espacios patrimoniales",
-      // Esta es la nueva ruta a tu imagen en la carpeta 'public'
       image: "/images/unicach-carranza2/unicach-carranza2.webp",
       description: "Balanceando la conservación con las necesidades funcionales modernas."
     }
   ];
-  // ===== FIN DE LA MODIFICACIÓN =====
 
-  // Variantes mejoradas para animaciones - CORREGIDO
   const textMaskVariants = {
-    hidden: { 
-      y: 100,
-      opacity: 0
-    },
-    visible: { 
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
+    hidden: { y: 100, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
   };
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.3, delayChildren: 0.2 }}
   };
 
   const imageVariants = {
     hidden: { scale: 1.1 },
-    visible: {
-      scale: 1,
-      transition: {
-        duration: 1.5,
-        ease: "easeOut"
-      }
-    }
+    visible: { scale: 1, transition: { duration: 1.5, ease: "easeOut" }}
   };
 
   return (
@@ -106,7 +76,7 @@ export const Hero = () => {
         autoplay={{
           delay: 6000,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true // MEJORA: pausar al interactuar
+          pauseOnMouseEnter: true
         }}
         loop={true}
         navigation={{
@@ -122,7 +92,6 @@ export const Hero = () => {
         }}
         className="hero-swiper"
         onSlideChange={(swiper) => {
-          // Reiniciar animaciones al cambiar slide
           const activeSlide = slides[swiper.realIndex];
           if (activeSlide && !loadedImages[activeSlide.id]) {
             handleImageLoad(activeSlide.id);
@@ -142,11 +111,10 @@ export const Hero = () => {
                 src={slide.image} 
                 alt={slide.title}
                 className="hero-image"
-                loading="eager" // MEJORA: carga prioritaria
+                loading="eager"
                 onLoad={() => handleImageLoad(slide.id)}
               />
               <div className="hero-overlay"></div>
-              {/* Loading state - MEJORA */}
               {!loadedImages[slide.id] && (
                 <div className="image-loading">
                   <div className="loading-spinner"></div>
@@ -160,7 +128,7 @@ export const Hero = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate={loadedImages[slide.id] ? "visible" : "hidden"}
-                key={slide.id} // MEJORA: forzar re-render
+                key={slide.id}
               >
                 <div className="title-mask">
                   <motion.h1
@@ -193,16 +161,17 @@ export const Hero = () => {
                   className="cta-mask"
                   variants={textMaskVariants}
                 >
-                  <button className="hero-cta">
+                  {/* ===== 2. AQUÍ ESTÁ EL CAMBIO ===== */}
+                  <Link to="/proyectos" className="hero-cta">
                     Explorar Proyectos
-                  </button>
+                  </Link>
+                  {/* ================================ */}
                 </motion.div>
               </motion.div>
             </div>
           </SwiperSlide>
         ))}
         
-        {/* Controles de navegación personalizados - MEJORA */}
         <div className="swiper-button-next"></div>
         <div className="swiper-button-prev"></div>
       </Swiper>

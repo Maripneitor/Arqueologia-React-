@@ -157,166 +157,45 @@
   margin: 0;
 }
 
-/* Sección de la línea de tiempo */
+/* ===== INICIO DE LA MODIFICACIÓN ===== */
+/* 3. Estilos para la lista simple de la línea de tiempo */
 .timeline-section {
   margin-bottom: 4rem;
+  padding: 2rem 0;
 }
 
-/* CORRECCIÓN: Espaciado uniforme para la línea de tiempo */
-.vertical-timeline {
-  padding: 2rem 0 !important;
+.simple-timeline-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.vertical-timeline-element {
-  margin-bottom: 3rem !important; /* Espaciado uniforme entre elementos */
-  position: relative;
+.simple-timeline-item {
+  background: var(--color-papyrus);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(139, 90, 43, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--color-bronze);
 }
 
-.vertical-timeline-element:last-child {
-  margin-bottom: 0 !important; /* Eliminar margen del último elemento */
+.simple-timeline-title {
+  font-family: var(--font-primary);
+  color: var(--color-earth);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.vertical-timeline-element-content {
-  margin: 0 !important;
-  padding: 2rem !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
-  border: 1px solid rgba(139, 90, 43, 0.1) !important;
-  border-radius: 12px !important;
-  position: relative;
+.simple-timeline-desc {
+  font-family: var(--font-secondary);
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.6;
 }
+/* ===== FIN DE LA MODIFICACIÓN ===== */
 
-.vertical-timeline-element-content::before {
-  display: none !important; /* Ocultar la flecha por defecto si causa problemas */
-}
-
-.vertical-timeline-element-icon {
-  width: 50px !important;
-  height: 50px !important;
-  margin-left: -25px !important;
-  box-shadow: 0 0 0 4px var(--color-sand), 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: linear-gradient(135deg, var(--color-bronze), var(--color-gold)) !important;
-}
-
-.vertical-timeline-element-date {
-  font-family: var(--font-secondary) !important;
-  font-weight: 600 !important;
-  color: var(--color-earth) !important;
-  opacity: 0.8;
-  padding: 0.5rem 0 !important;
-  font-size: 1rem !important;
-}
-
-/* Asegurar espaciado consistente para todos los elementos */
-.vertical-timeline-element:nth-child(odd) .vertical-timeline-element-content,
-.vertical-timeline-element:nth-child(even) .vertical-timeline-element-content {
-  margin: 0 !important;
-}
-
-/* Línea central de la timeline */
-.vertical-timeline::before {
-  background: var(--color-terracotta) !important;
-  width: 3px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
-
-/* Estilos específicos para el título y descripción */
-.vertical-timeline-element-title {
-  font-family: var(--font-primary) !important;
-  color: var(--color-earth) !important;
-  font-size: 1.25rem !important;
-  margin-bottom: 0.5rem !important;
-  line-height: 1.3 !important;
-}
-
-.vertical-timeline-element p {
-  font-family: var(--font-secondary) !important;
-  color: var(--color-text) !important;
-  line-height: 1.6 !important;
-  margin: 0 !important;
-  font-size: 0.95rem !important;
-}
-
-/* Responsive para la línea de tiempo */
-@media (max-width: 1169px) {
-  .vertical-timeline-element {
-    margin-bottom: 2.5rem !important;
-  }
-  
-  .vertical-timeline-element-icon {
-    width: 45px !important;
-    height: 45px !important;
-    margin-left: -22.5px !important;
-  }
-  
-  .vertical-timeline-element-content {
-    padding: 1.5rem !important;
-  }
-  
-  .vertical-timeline::before {
-    left: 30px !important;
-    transform: none !important;
-  }
-  
-  .vertical-timeline-element-date {
-    float: none !important;
-    margin: 0.5rem 0 0 0 !important;
-    text-align: left !important;
-    width: 100% !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .vertical-timeline-element {
-    margin-bottom: 2rem !important;
-  }
-  
-  .vertical-timeline-element-icon {
-    width: 40px !important;
-    height: 40px !important;
-    margin-left: -20px !important;
-    left: 30px !important;
-  }
-  
-  .vertical-timeline-element-content {
-    margin-left: 70px !important;
-    padding: 1.25rem !important;
-  }
-  
-  .vertical-timeline-element-date {
-    font-size: 0.9rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .vertical-timeline-element {
-    margin-bottom: 1.5rem !important;
-  }
-  
-  .vertical-timeline-element-content {
-    margin-left: 60px !important;
-    padding: 1rem !important;
-  }
-  
-  .vertical-timeline-element-icon {
-    width: 35px !important;
-    height: 35px !important;
-    margin-left: -17.5px !important;
-    left: 30px !important;
-  }
-}
-
-/* Eliminar cualquier espaciado inconsistente de elementos hijos */
-.vertical-timeline-element-content *:first-child {
-  margin-top: 0 !important;
-}
-
-.vertical-timeline-element-content *:last-child {
-  margin-bottom: 0 !important;
-}
 
 /* Estados de carga y error */
 .loading-container {

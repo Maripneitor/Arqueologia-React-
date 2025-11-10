@@ -171,3 +171,36 @@
     justify-content: center;
   }
 }
+
+/* ===== INICIO DE LA MODIFICACIÓN ===== */
+/* Estilos para el mapa en el Footer */
+
+.footer-map-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 200px; /* Altura del mapa en el footer */
+  border: 2px solid var(--color-bronze);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer-map {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Ajuste responsivo para el grid del footer */
+@media (max-width: 1024px) {
+  .footer-content {
+    /* Ajusta el grid para que el mapa se vea bien */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-map-wrapper {
+    height: 250px; /* Un poco más de altura en móvil */
+  }
+}
+/* ===== FIN DE LA MODIFICACIÓN ===== */

@@ -81,10 +81,28 @@ export const Footer = () => {
           <h3 className="footer-title">Contacto</h3>
           <div className="contact-info">
             <p>📧 info@empresa-arqueologia.com</p>
-            <p>📞 +34 912 345 678</p>
-            <p>📍 Madrid, España</p>
+            <p>📞 +52 961-129-0622</p>
+            <p>📍 Chiapa de Corzo, Chiapas 
+</p>
           </div>
         </div>
+
+        {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
+        {/* Nueva sección para el mapa */}
+        <div className="footer-section">
+          <h3 className="footer-title">Nuestra Ubicación</h3>
+          <div className="footer-map-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.9775664214567!2d-93.01058826074785!3d16.71738903473528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ed25e5c8fe81e9%3A0xd130c8978e0310f1!2sBlvrd%20Montebello%2C%2029160%20Chiapa%20de%20Corzo%2C%20Chis.!5e1!3m2!1ses-419!2smx!4v1762740637576!5m2!1ses-419!2smx" 
+              className="footer-map"
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Ubicación de la Empresa"
+            ></iframe>
+          </div>
+        </div>
+        {/* ===== FIN DE LA MODIFICACIÓN ===== */}
 
       </div>
 
@@ -95,8 +113,8 @@ export const Footer = () => {
             © {currentYear} Empresa Arqueología. Todos los derechos reservados.
           </p>
           <div className="legal-links">
-            <Link to="/privacidad" className="legal-link">Política de Privacidad</Link>
-            <Link to="/terminos" className="legal-link">Términos de Servicio</Link>
+            <Link to="/" className="legal-link">Política de Privacidad</Link>
+            <Link to="/" className="legal-link">Términos de Servicio</Link>
           </div>
         </div>
       </div>

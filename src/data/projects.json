@@ -10,6 +10,7 @@
       "ubicacion": "San Cristóbal de las Casas, Chiapas",
       "es_destacado": true,
       "orden": 1,
+      "mapa_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61124.90848039265!2d-92.6800626486328!3d16.735914400000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8f633247d5b%3A0x46a6551b27e8003!2sCatedral%20de%20San%20Crist%C3%B3bal%20M%C3%A1rtir!5e0!3m2!1ses-419!2smx!4v1731195000000!5m2!1ses-419!2smx",
       "imagen_antes": {
         "url": "/images/fotos-caridad/Fotos de Caridad-Principal.webp",
         "alternativeText": "Fotografía antigua antes de la restauración"
@@ -59,6 +60,7 @@
       "ubicacion": "San Cristóbal de las Casas, Chiapas",
       "es_destacado": true,
       "orden": 2,
+      "mapa_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.239632970783!2d-92.63911132333201!3d16.73696892534888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8f633247d5b%3A0x46a6551b27e8003!2sCatedral%20de%20San%20Crist%C3%B3bal%20M%C3%A1rtir!5e0!3m2!1ses-419!2smx!4v1731195671509!5m2!1ses-419!2smx",
       "imagen_antes": {
         "url": "/images/Catedral/Sancris08.webp",
         "alternativeText": "Catedral de San Cristóbal antes de la intervención"
@@ -100,6 +102,7 @@
       "ubicacion": "Bajucú, Chiapas",
       "es_destacado": true,
       "orden": 3,
+      "mapa_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.239632970783!2d-92.63911132333201!3d16.73696892534888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8f633247d5b%3A0x46a6551b27e8003!2sCatedral%20de%20San%20Crist%C3%B3bal%20M%C3%A1rtir!5e0!3m2!1ses-419!2smx!4v1731195671509!5m2!1ses-419!2smx",
       "imagen_antes": {
         "url": "/images/hacienda-bajucu/hacienda-bajucu-galeria-01.webp",
         "alternativeText": "Hacienda Bajucú antes de la restauración"
@@ -141,6 +144,7 @@
       "ubicacion": "Bajucú, Chiapas",
       "es_destacado": false,
       "orden": 4,
+      "mapa_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.239632970783!2d-92.63911132333201!3d16.73696892534888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8f633247d5b%3A0x46a6551b27e8003!2sCatedral%20de%20San%20Crist%C3%B3bal%20M%C3%A1rtir!5e0!3m2!1ses-419!2smx!4v1731195671509!5m2!1ses-419!2smx",
       "imagen_antes": {
         "url": "/images/capilla-bajucu/capilla-bajucu.webp",
         "alternativeText": "Capilla de Bajucú antes de la restauración"
@@ -182,6 +186,7 @@
       "ubicacion": "Venustiano Carranza, Chiapas",
       "es_destacado": false,
       "orden": 5,
+      "mapa_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.239632970783!2d-92.63911132333201!3d16.73696892534888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8f633247d5b%3A0x46a6551b27e8003!2sCatedral%20de%20San%20Crist%C3%B3bal%20M%C3%A1rtir!5e0!3m2!1ses-419!2smx!4v1731195671509!5m2!1ses-419!2smx",
       "imagen_antes": {
         "url": "/images/unicach-carranza/unicach-carranza.webp",
         "alternativeText": "UNICACH Sede Carranza antes de la adecuación"
@@ -215,12 +220,13 @@
       "ubicacion": "Tuxtla Gutiérrez, Chiapas",
       "es_destacado": true,
       "orden": 6,
+      "mapa_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.239632970783!2d-92.63911132333201!3d16.73696892534888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ecd8f633247d5b%3A0x46a6551b27e8003!2sCatedral%20de%20San%20Crist%C3%B3bal%20M%C3%A1rtir!5e0!3m2!1ses-419!2smx!4v1731195671509!5m2!1ses-419!2smx",
       "imagen_antes": {
-        "url": "/images/unicach-carranza2/unicach-carranza2-galeria-01.webp",
+        "url": "/images/unicach-carranza2/unicach-carranza2.webp",
         "alternativeText": "UNICACH Escuela de Artes antes de la restauración"
       },
       "imagen_despues": {
-        "url": "/images/unicach-carranza2/unicach-carranza2.webp",
+        "url": "/images/unicach-carranza2/unicach-carranza2-galeria-01.webp",
         "alternativeText": "UNICACH Escuela de Artes después de la restauración"
       },
       "galeria": [

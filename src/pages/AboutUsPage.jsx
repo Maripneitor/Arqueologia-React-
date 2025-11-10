@@ -1,17 +1,12 @@
-// src/pages/AboutUsPage.jsx - Versión con optimizaciones de imágenes
+// src/pages/AboutUsPage.jsx - REVERTIDO PARA QUITAR EL ERROR
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { RevealOnScroll } from '../components/RevealOnScroll';
 import {
-  FaRocket,
-  FaTools,
-  FaMicroscope,
-  FaAward,
-  FaGlobeAmericas,
-  FaUniversity,
-  FaHandsHelping,
-  FaUser
+  FaRocket, FaTools, FaMicroscope, FaAward,
+  FaGlobeAmericas, FaUniversity, FaHandsHelping, FaUser
 } from 'react-icons/fa';
+// Quitamos la importación de 'react-vertical-timeline-component'
 import { localAPI } from '../services/localData';
 import './AboutUsPage.css';
 
@@ -55,21 +50,20 @@ export const AboutUsPage = () => {
     fetchData();
   }, []);
 
-  // Mapeo de iconos para la línea de tiempo
+  // Mapeo de iconos (se mantiene por si lo usamos luego)
   const getTimelineIcon = (iconName) => {
     const iconMap = {
-      'FaRocket': FaRocket,
-      'FaTools': FaTools,
-      'FaMicroscope': FaMicroscope,
-      'FaAward': FaAward,
-      'FaGlobeAmericas': FaGlobeAmericas,
-      'FaUniversity': FaUniversity,
-      'FaHandsHelping': FaHandsHelping,
-      'FaShovel': FaTools, // Usar FaTools como fallback para FaShovel
+      'FaRocket': <FaRocket />,
+      'FaTools': <FaTools />,
+      'FaMicroscope': <FaMicroscope />,
+      'FaAward': <FaAward />,
+      'FaGlobeAmericas': <FaGlobeAmericas />,
+      'FaUniversity': <FaUniversity />,
+      'FaHandsHelping': <FaHandsHelping />,
+      'FaShovel': <FaTools />,
     };
     
-    const IconComponent = iconMap[iconName] || FaUser;
-    return <IconComponent className="timeline-icon" />;
+    return iconMap[iconName] || <FaUser />;
   };
 
   if (error) {
@@ -169,7 +163,7 @@ export const AboutUsPage = () => {
                           src={member.foto?.url} 
                           alt={member.foto?.alternativeText || member.nombre}
                           className="photo-img"
-                          loading="lazy" // ✅ Lazy loading para imágenes del equipo
+                          loading="lazy"
                           decoding="async"
                         />
                       </div>
@@ -184,7 +178,8 @@ export const AboutUsPage = () => {
               </div>
             </section>
 
-            {/* Sección de la línea de tiempo personalizada con RevealOnScroll */}
+            {/* ===== INICIO DE LA MODIFICACIÓN ===== */}
+            {/* Sección de la línea de tiempo (revertida a una lista simple) */}
             <RevealOnScroll delay={0.4}>
               <section className="timeline-section">
                 <h2 className="section-title">Nuestra Trayectoria</h2>
@@ -192,24 +187,17 @@ export const AboutUsPage = () => {
                   Hitos importantes en nuestro camino de innovación arqueológica
                 </p>
                 
-                <div className="custom-timeline">
-                  {timeline.map((item, index) => (
-                    <RevealOnScroll key={item.id} delay={0.1 * index}>
-                      <div className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-                        <div className="timeline-content">
-                          <div className="timeline-icon">
-                            {getTimelineIcon(item.icono)}
-                          </div>
-                          <div className="timeline-year">{item.año}</div>
-                          <h3 className="timeline-title">{item.titulo}</h3>
-                          <p className="timeline-description">{item.descripcion}</p>
-                        </div>
-                      </div>
-                    </RevealOnScroll>
+                <div className="simple-timeline-list">
+                  {timeline.map((item) => (
+                    <div key={item.id} className="simple-timeline-item">
+                      <h3 className="simple-timeline-title">{item.año} - {item.titulo}</h3>
+                      <p className="simple-timeline-desc">{item.descripcion}</p>
+                    </div>
                   ))}
                 </div>
               </section>
             </RevealOnScroll>
+            {/* ===== FIN DE LA MODIFICACIÓN ===== */}
           </>
         )}
       </div>

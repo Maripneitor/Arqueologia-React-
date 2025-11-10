@@ -114,3 +114,111 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
+
+/* ===== INICIO DE LA MODIFICACIÓN ===== */
+/* Estilos para el CTA del Home (traídos de ServicesPage.css) */
+
+.cta-section {
+  background: linear-gradient(135deg, var(--color-papyrus), var(--color-sand));
+  border-radius: 20px;
+  padding: 4rem;
+  text-align: center;
+  border: 1px solid rgba(139, 90, 43, 0.1);
+  max-width: 1200px;
+  margin: 4rem auto 0;
+}
+
+.home-cta {
+  background: var(--color-sand);
+  margin-top: 0;
+  padding-bottom: 4rem;
+}
+
+.cta-content h2 {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  color: var(--color-earth);
+  margin-bottom: 1rem;
+}
+
+.cta-content p {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  color: var(--color-clay);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  text-align: center;
+}
+.cta-button.primary {
+  background: var(--color-bronze);
+  color: var(--color-sand);
+}
+.cta-button.primary:hover {
+  background: var(--color-earth);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(205, 127, 50, 0.3);
+}
+.cta-button.secondary {
+  background: transparent;
+  color: var(--color-earth);
+  border-color: var(--color-bronze);
+}
+.cta-button.secondary:hover {
+  background: var(--color-bronze);
+  color: var(--color-sand);
+  transform: translateY(-2px);
+}
+.cta-button.large {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 3rem 2rem;
+  }
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cta-button.large {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-section {
+    padding: 2rem 1.5rem;
+  }
+  .cta-content h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* ===== FIN DE LA MODIFICACIÓN ===== */
